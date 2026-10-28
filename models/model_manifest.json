@@ -1,0 +1,152 @@
+[
+  {
+    "file": "models/fold_1_model.pth",
+    "fold": 1,
+    "source_md5": "ecb050636a43f26ceee6ad6a03d75a25",
+    "source_bytes": 26324098,
+    "release_bytes": 10689285,
+    "state_tensors": 253,
+    "state_elements": 2652603,
+    "tensor_equality": true,
+    "weights_only_load": true,
+    "metadata": {
+      "epoch": 9,
+      "metrics": {
+        "AUC": 0.9215775928168901,
+        "AUPR": 0.9238867168878608,
+        "Accuracy": 0.851261620185923,
+        "Precision": 0.8715980460572226,
+        "Recall": 0.8255122273628552,
+        "F1": 0.8479293957909029,
+        "Sensitivity": 0.8255122273628552,
+        "Specificity": 0.8772515010006671,
+        "TP": 1249,
+        "TN": 1315,
+        "FP": 184,
+        "FN": 264,
+        "loss": 0.35776352882385254
+      },
+      "timestamp": "2026-10-02T14:14:17.280218"
+    }
+  },
+  {
+    "file": "models/fold_2_model.pth",
+    "fold": 2,
+    "source_md5": "cb45c8c27b12e94606d2578b26fb6d27",
+    "source_bytes": 26324098,
+    "release_bytes": 10689285,
+    "state_tensors": 253,
+    "state_elements": 2652603,
+    "tensor_equality": true,
+    "weights_only_load": true,
+    "metadata": {
+      "epoch": 8,
+      "metrics": {
+        "AUC": 0.9230648147454109,
+        "AUPR": 0.9272985950912984,
+        "Accuracy": 0.849933598937583,
+        "Precision": 0.882480173035328,
+        "Recall": 0.8089887640449438,
+        "F1": 0.8441379310344828,
+        "Sensitivity": 0.8089887640449438,
+        "Specificity": 0.8912608405603736,
+        "TP": 1224,
+        "TN": 1336,
+        "FP": 163,
+        "FN": 289,
+        "loss": 0.35673636198043823
+      },
+      "timestamp": "2026-10-02T14:21:16.860679"
+    }
+  },
+  {
+    "file": "models/fold_3_model.pth",
+    "fold": 3,
+    "source_md5": "6e99cc9e380606e2028f635bf75fef59",
+    "source_bytes": 26324098,
+    "release_bytes": 10689285,
+    "state_tensors": 253,
+    "state_elements": 2652603,
+    "tensor_equality": true,
+    "weights_only_load": true,
+    "metadata": {
+      "epoch": 6,
+      "metrics": {
+        "AUC": 0.9188421274019649,
+        "AUPR": 0.9237954904918824,
+        "Accuracy": 0.8436254980079682,
+        "Precision": 0.8716119828815977,
+        "Recall": 0.807666886979511,
+        "F1": 0.8384219554030875,
+        "Sensitivity": 0.807666886979511,
+        "Specificity": 0.8799199466310874,
+        "TP": 1222,
+        "TN": 1319,
+        "FP": 180,
+        "FN": 291,
+        "loss": 0.36552172899246216
+      },
+      "timestamp": "2026-10-02T14:27:41.588657"
+    }
+  },
+  {
+    "file": "models/fold_4_model.pth",
+    "fold": 4,
+    "source_md5": "ce2c41540a247c252fab7b6bbede43b9",
+    "source_bytes": 26324098,
+    "release_bytes": 10689285,
+    "state_tensors": 253,
+    "state_elements": 2652603,
+    "tensor_equality": true,
+    "weights_only_load": true,
+    "metadata": {
+      "epoch": 7,
+      "metrics": {
+        "AUC": 0.9207034696406989,
+        "AUPR": 0.9261036002874713,
+        "Accuracy": 0.8422974767596282,
+        "Precision": 0.8771802325581395,
+        "Recall": 0.797752808988764,
+        "F1": 0.8355832467982001,
+        "Sensitivity": 0.797752808988764,
+        "Specificity": 0.8872581721147431,
+        "TP": 1207,
+        "TN": 1330,
+        "FP": 169,
+        "FN": 306,
+        "loss": 0.3624502718448639
+      },
+      "timestamp": "2026-10-02T14:34:22.561692"
+    }
+  },
+  {
+    "file": "models/fold_5_model.pth",
+    "fold": 5,
+    "source_md5": "c139fd60b0bb9aabe143b1cf75331b2b",
+    "source_bytes": 26324098,
+    "release_bytes": 10689285,
+    "state_tensors": 253,
+    "state_elements": 2652603,
+    "tensor_equality": true,
+    "weights_only_load": true,
+    "metadata": {
+      "epoch": 10,
+      "metrics": {
+        "AUC": 0.9163632772145518,
+        "AUPR": 0.9209333133471787,
+        "Accuracy": 0.8330013280212484,
+        "Precision": 0.8612303290414879,
+        "Recall": 0.7957699933906147,
+        "F1": 0.8272071453108897,
+        "Sensitivity": 0.7957699933906147,
+        "Specificity": 0.8705803869246164,
+        "TP": 1204,
+        "TN": 1305,
+        "FP": 194,
+        "FN": 309,
+        "loss": 0.3729099929332733
+      },
+      "timestamp": "2026-10-02T14:40:56.063289"
+    }
+  }
+]

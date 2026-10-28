@@ -1,0 +1,8 @@
+__pycache__/
+*.pyc
+runs/
+upload_packages/
+data/*
+!data/README.md
+models/*.pth
+*.zip

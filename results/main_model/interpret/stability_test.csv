@@ -1,0 +1,6 @@
+sub,n,jaccard_mean
+collab_mirna,0,
+collab_gene,0,
+ppi,3132,0.7835089399744571
+pathway,12934,0.4221509200556673
+disease,10370,0.43971070395371264

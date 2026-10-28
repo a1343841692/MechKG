@@ -1,0 +1,417 @@
+2026-10-02 14:05:06,943 - main - INFO - 🚀 启动XGFT模型训练 (K折: 是)
+2026-10-02 14:05:06,944 - main - INFO - 📊 加载增强知识图谱数据...
+2026-10-02 14:05:06,953 - data_loader - INFO - ✅ 从 interaction.csv 加载实体名称用于精确分类
+2026-10-02 14:05:06,959 - data_loader - INFO - 📊 提取实体用于精确分类:
+2026-10-02 14:05:06,959 - data_loader - INFO -    确定的基因: 3,408 个
+2026-10-02 14:05:06,959 - data_loader - INFO -    确定的miRNA: 886 个
+2026-10-02 14:05:06,959 - data_loader - INFO - 🔧 增强的知识图谱加载器已初始化 (v3.0 - 支持关系归并)
+2026-10-02 14:05:06,959 - data_loader - INFO - 构建异构图数据对象 (v3.0 - 关系归并版)...
+2026-10-02 14:05:06,959 - data_loader - INFO - 🧬 开始加载和准备所有原始特征...
+2026-10-02 14:05:06,959 - data_loader - INFO -   📊 加载基因表达数据: EB++AdjustPANCAN_IlluminaHiSeq_RNASeqV2.geneExp.xena
+2026-10-02 14:06:04,431 - data_loader - INFO -   [EXPR] Gene 表达谱 PCA: 11069 -> 64 维，累计解释方差 0.959
+2026-10-02 14:06:04,557 - data_loader - INFO -     ✅ 基因特征: 20530 个, 原始维度: 64
+2026-10-02 14:06:04,558 - data_loader - INFO -   📊 加载miRNA表达数据: pancanMiRs_EBadjOnProtocolPlatformWithoutRepsWithUnCorrectMiRs_08_04_16.xena
+2026-10-02 14:06:07,138 - data_loader - INFO -   [EXPR] miRNA 表达谱 PCA: 10824 -> 64 维，累计解释方差 0.978
+2026-10-02 14:06:07,145 - data_loader - INFO -     ✅ miRNA特征: 743 个, 原始维度: 64
+2026-10-02 14:06:07,145 - data_loader - INFO -   🧠 正在加载 LLM (BioBERT) 嵌入数据: kg_v2_text_embeddings.pkl
+2026-10-02 14:06:07,286 - data_loader - INFO -     ✅ 通路 LLM (BioBERT) 特征: 14071 个, 原始维度: 768
+2026-10-02 14:06:07,313 - data_loader - INFO -     ✅ 疾病 LLM (BioBERT) 特征: 4199 个, 原始维度: 768
+2026-10-02 14:06:07,506 - data_loader - INFO - 成功加载数据: 200,224 条三元组
+2026-10-02 14:06:07,759 - data_loader - INFO - [KG-v2] 使用显式节点类型: {'Pathway': 14071, 'Disease': 4199, 'Gene': 3303, 'miRNA': 882}
+2026-10-02 14:06:07,760 - data_loader - INFO - [ISOLATED] 保留孤立节点 1 个: ['hsa-miR-3127-3p']
+2026-10-02 14:06:07,795 - data_loader - INFO - 添加反向边后: 400,448 条三元组
+2026-10-02 14:06:07,797 - data_loader - INFO - 创建节点映射...
+2026-10-02 14:06:07,797 - data_loader - INFO - 🎲 生成新的节点映射 (Random Order)
+2026-10-02 14:06:08,021 - data_loader - INFO - 节点映射完成
+2026-10-02 14:06:08,022 - data_loader - INFO - ========================= [调试] 特征匹配分析: Disease =========================
+2026-10-02 14:06:08,022 - data_loader - INFO -   - 图谱中此类节点总数: 4199
+2026-10-02 14:06:08,022 - data_loader - INFO -   - 特征文件中此类节点总数: 4199
+2026-10-02 14:06:08,022 - data_loader - INFO -   - ✅ 成功匹配的节点数: 4199
+2026-10-02 14:06:08,022 - data_loader - INFO -   - ❌ 匹配失败的节点数: 0
+2026-10-02 14:06:08,022 - data_loader - INFO - ================================================================================
+2026-10-02 14:06:08,022 - data_loader - INFO - 处理边数据...
+2026-10-02 14:06:08,022 - data_loader - INFO - 正在分析原始边类型 (head, relation, tail)...
+2026-10-02 14:06:37,336 - data_loader - INFO - ✨ 关系类型归并: 16 -> 16 (0.0% 减少)
+2026-10-02 14:06:37,354 - data_loader - INFO - ✨ 归并后的核心关系名称: ['associated_with_disease', 'go_bp', 'go_cc', 'go_mf', 'in_pathway', 'is_a', 'ppi_physical', 'reverse_associated_with_disease', 'reverse_go_bp', 'reverse_go_cc', 'reverse_go_mf', 'reverse_in_pathway', 'reverse_is_a', 'reverse_ppi_physical', 'reverse_validated_interaction', 'validated_interaction']
+2026-10-02 14:06:57,824 - data_loader - INFO -   ('miRNA', 'validated_interaction', 'Gene'): 10,112 条边
+2026-10-02 14:06:57,842 - data_loader - INFO -   ('miRNA', 'associated_with_disease', 'Disease'): 40,961 条边
+2026-10-02 14:06:57,849 - data_loader - INFO -   ('Gene', 'associated_with_disease', 'Disease'): 15,940 条边
+2026-10-02 14:06:57,851 - data_loader - INFO -   ('Disease', 'is_a', 'Disease'): 5,980 条边
+2026-10-02 14:06:57,865 - data_loader - INFO -   ('Gene', 'go_bp', 'Pathway'): 32,645 条边
+2026-10-02 14:06:57,870 - data_loader - INFO -   ('Gene', 'go_mf', 'Pathway'): 11,501 条边
+2026-10-02 14:06:57,874 - data_loader - INFO -   ('Gene', 'go_cc', 'Pathway'): 8,269 条边
+2026-10-02 14:06:57,900 - data_loader - INFO -   ('Gene', 'in_pathway', 'Pathway'): 64,985 条边
+2026-10-02 14:06:57,905 - data_loader - INFO -   ('Gene', 'ppi_physical', 'Gene'): 9,831 条边
+2026-10-02 14:06:57,909 - data_loader - INFO -   ('Gene', 'reverse_validated_interaction', 'miRNA'): 10,112 条边
+2026-10-02 14:06:57,925 - data_loader - INFO -   ('Disease', 'reverse_associated_with_disease', 'miRNA'): 40,961 条边
+2026-10-02 14:06:57,932 - data_loader - INFO -   ('Disease', 'reverse_associated_with_disease', 'Gene'): 15,940 条边
+2026-10-02 14:06:57,934 - data_loader - INFO -   ('Disease', 'reverse_is_a', 'Disease'): 5,980 条边
+2026-10-02 14:06:57,948 - data_loader - INFO -   ('Pathway', 'reverse_go_bp', 'Gene'): 32,645 条边
+2026-10-02 14:06:57,953 - data_loader - INFO -   ('Pathway', 'reverse_go_mf', 'Gene'): 11,501 条边
+2026-10-02 14:06:57,956 - data_loader - INFO -   ('Pathway', 'reverse_go_cc', 'Gene'): 8,269 条边
+2026-10-02 14:06:57,982 - data_loader - INFO -   ('Pathway', 'reverse_in_pathway', 'Gene'): 64,985 条边
+2026-10-02 14:06:57,987 - data_loader - INFO -   ('Gene', 'reverse_ppi_physical', 'Gene'): 9,831 条边
+2026-10-02 14:06:57,987 - data_loader - INFO - ============================================================
+2026-10-02 14:06:57,987 - data_loader - INFO - ✨ 边类型归并总结:
+2026-10-02 14:06:57,987 - data_loader - INFO -   - 归并前 (head, relation, tail) 数量: 18
+2026-10-02 14:06:57,987 - data_loader - INFO -   - 归并后 (head, relation, tail) 数量: 18
+2026-10-02 14:06:57,987 - data_loader - INFO -   - 边类型总数减少: 0.0%
+2026-10-02 14:06:57,987 - data_loader - INFO - ============================================================
+2026-10-02 14:06:58,004 - data_loader - INFO -   miRNA: 883 个节点, 原始特征维度: 64
+2026-10-02 14:06:58,004 - data_loader - INFO -     生物学特征: 547, 随机特征: 336
+2026-10-02 14:06:58,046 - data_loader - INFO -   Gene: 3303 个节点, 原始特征维度: 64
+2026-10-02 14:06:58,046 - data_loader - INFO -     生物学特征: 3184, 随机特征: 119
+2026-10-02 14:06:58,205 - data_loader - INFO -   Pathway: 14071 个节点, 原始特征维度: 768
+2026-10-02 14:06:58,205 - data_loader - INFO -     生物学特征: 14071, 随机特征: 0
+2026-10-02 14:06:58,244 - data_loader - INFO -   Disease: 4199 个节点, 原始特征维度: 768
+2026-10-02 14:06:58,244 - data_loader - INFO -     生物学特征: 4199, 随机特征: 0
+2026-10-02 14:06:58,244 - data_loader - INFO - 
+🎯 特征使用统计:
+2026-10-02 14:06:58,244 - data_loader - INFO -   生物学特征: 22,001 (98.0%)
+2026-10-02 14:06:58,244 - data_loader - INFO -   随机特征: 455 (2.0%)
+2026-10-02 14:06:58,244 - data_loader - INFO - ✅ 异构图构建完成: 18 种边类型
+2026-10-02 14:06:58,244 - data_loader - INFO - 🚀 关系类型归并带来的性能提升预期: 5-10倍
+2026-10-02 14:06:58,301 - main - INFO - 🔧 提取到的节点原始特征维度: {'miRNA': 65, 'Gene': 65, 'Pathway': 768, 'Disease': 768}
+2026-10-02 14:06:58,301 - main - INFO - 🔍 执行数据质量验证...
+2026-10-02 14:06:58,399 - data_loader - INFO - 从 ('miRNA', 'validated_interaction', 'Gene') 提取 10112 个正样本
+2026-10-02 14:06:58,400 - data_loader - INFO - 总计唯一正样本: 10,112
+2026-10-02 14:06:58,421 - main - INFO - 🔄 开始5折交叉验证训练...
+2026-10-02 14:06:58,421 - trainer - INFO - 🔄 使用K折交叉验证训练
+2026-10-02 14:06:58,818 - trainer - INFO - 创建5折交叉验证数据...
+2026-10-02 14:06:58,818 - data_loader - INFO - 准备K折交叉验证（带独立测试集）...
+2026-10-02 14:06:59,063 - data_loader - INFO - 🔒 使用固定划分 /root/mirna/消融实验_fixed/splits/coding_named_splits.csv: 测试集 3012，每折训练 [13656, 13673, 13680, 13692, 13675]
+2026-10-02 14:06:59,744 - trainer - INFO - [EARLY-FUSION] 配对特征表 (883, 3303, 6)，来源 /root/mirna/消融实验_fixed/data_kg_v2/pair_seq_features_coding.npz
+2026-10-02 14:06:59,753 - trainer - INFO - ✅ K折训练器初始化完成
+2026-10-02 14:06:59,753 - trainer - INFO -    设备: cuda
+2026-10-02 14:06:59,753 - trainer - INFO -    折数: 5
+2026-10-02 14:06:59,753 - trainer - INFO -    独立测试集大小: 3012
+2026-10-02 14:06:59,753 - trainer - INFO - 🚀 开始K折交叉验证训练...
+2026-10-02 14:06:59,753 - trainer - INFO - 
+📊 训练配置:
+2026-10-02 14:06:59,753 - trainer - INFO -    K折数: 5
+2026-10-02 14:06:59,753 - trainer - INFO -    独立测试集大小: 3,012
+2026-10-02 14:06:59,753 - trainer - INFO -    模型类型: XGFT
+2026-10-02 14:06:59,753 - trainer - INFO -    隐藏维度: 128
+2026-10-02 14:06:59,753 - trainer - INFO -    层数: 3
+2026-10-02 14:06:59,753 - trainer - INFO -    注意力头数: 4
+2026-10-02 14:06:59,753 - trainer - INFO -    初始学习率: 0.0008
+2026-10-02 14:06:59,753 - trainer - INFO -    批次大小: 1024
+2026-10-02 14:06:59,753 - trainer - INFO -    设备: cuda
+2026-10-02 14:06:59,753 - trainer - INFO - 
+2026-10-02 14:06:59,753 - trainer - INFO - 
+============================================================
+2026-10-02 14:06:59,753 - trainer - INFO - 🔄 开始训练第 1/5 折
+2026-10-02 14:06:59,753 - trainer - INFO - ============================================================
+2026-10-02 14:06:59,753 - trainer - INFO -    训练样本数: 13,656
+2026-10-02 14:06:59,754 - trainer - INFO -    验证样本数: 3,438
+2026-10-02 14:06:59,754 - trainer - INFO -    批次大小: 1024
+2026-10-02 14:06:59,754 - trainer - INFO -    学习率: 0.0008
+2026-10-02 14:06:59,754 - trainer - INFO -    最大轮数: 100
+2026-10-02 14:06:59,754 - trainer - INFO -    早停耐心: 15
+2026-10-02 14:06:59,754 - models - INFO - 🧠 创建XGFT模型:
+2026-10-02 14:06:59,754 - models - INFO -    节点特征维度: {'miRNA': 65, 'Gene': 65, 'Pathway': 768, 'Disease': 768}
+2026-10-02 14:06:59,754 - models - INFO -    目标隐藏维度: 128
+2026-10-02 14:06:59,755 - models - INFO -   为 miRNA 创建投影层: 65 -> 128
+2026-10-02 14:06:59,755 - models - INFO -   为 Gene 创建投影层: 65 -> 128
+2026-10-02 14:06:59,756 - models - INFO -   为 Pathway 创建投影层: 768 -> 128
+2026-10-02 14:06:59,757 - models - INFO -   为 Disease 创建投影层: 768 -> 128
+2026-10-02 14:06:59,795 - models - INFO - ✅ XGFT_Layer初始化: 128维, 4头, 高效全局注意力
+2026-10-02 14:06:59,795 - models - INFO -   添加XGFT层 1/3
+2026-10-02 14:06:59,804 - models - INFO - ✅ XGFT_Layer初始化: 128维, 4头, 高效全局注意力
+2026-10-02 14:06:59,804 - models - INFO -   添加XGFT层 2/3
+2026-10-02 14:06:59,812 - models - INFO - ✅ XGFT_Layer初始化: 128维, 4头, 高效全局注意力
+2026-10-02 14:06:59,812 - models - INFO -   添加XGFT层 3/3
+2026-10-02 14:06:59,812 - models - INFO -   [EARLY-FUSION] 配对特征编码器: 6 -> 64
+2026-10-02 14:06:59,816 - models - INFO -   [MECHKG] 证据头启用: K=16, r=0.2, 残差=False, 通道=['collab', 'ppi', 'pathway', 'disease', 'sequence'], 通道失活 图谱=0.0 序列=0.0, 疾病特异性=True, 关闭通道=collab, 线性打分=True
+2026-10-02 14:06:59,816 - models - INFO -   [GLOBAL-TOKENS] M=0 (已关闭全局分支)
+2026-10-02 14:06:59,816 - models - INFO -   [ENCODER] 编码器=hgt
+2026-10-02 14:06:59,816 - models - INFO - ✅ XGFT_Model 初始化完成 (交互式局部-全局融合)
+2026-10-02 14:06:59,816 - models - INFO -    节点类型投影层: ['miRNA', 'Gene', 'Pathway', 'Disease']
+2026-10-02 14:06:59,816 - models - INFO -    XGFT层数: 3
+2026-10-02 14:06:59,816 - models - INFO -    隐藏维度: 128
+2026-10-02 14:06:59,826 - models - INFO - ✅ 创建XGFT模型 (交互式局部-全局融合)
+2026-10-02 14:06:59,827 - models - INFO -    总参数: 2,652,603
+2026-10-02 14:06:59,827 - models - INFO -    可训练参数: 2,652,603
+2026-10-02 14:06:59,827 - models - INFO -    投影层参数: 214,784 (8.1%)
+2026-10-02 14:06:59,828 - models - INFO -    XGFT层参数: 2,227,050 (84.0%)
+2026-10-02 14:07:00,337 - trainer - INFO -    [NEG-MATCH] hard 验证集: 正例 1730 + 度匹配负例 1730
+2026-10-02 14:14:17,250 - trainer - INFO - [MECHKG-CONTRIB] fold=1 pos: collab=+0.000, ppi=-0.602, pathway=+0.967, disease=+0.411, sequence=+1.148, residual=+0.000, 机制占比=1.000
+2026-10-02 14:14:17,277 - trainer - INFO - [MECHKG-CONTRIB] fold=1 neg: collab=+0.000, ppi=-2.096, pathway=+0.205, disease=+0.183, sequence=-0.375, residual=+0.000, 机制占比=1.000
+2026-10-02 14:14:17,278 - trainer - INFO - [MECHKG-COVER] fold=1 collab_mirna=0.000, collab_gene=0.000, ppi=0.134, pathway=0.677, disease=0.540
+2026-10-02 14:14:17,278 - trainer - INFO - 
+📋 第 1 折训练总结:
+2026-10-02 14:14:17,278 - trainer - INFO -    训练轮数: 25
+2026-10-02 14:14:17,278 - trainer - INFO -    最佳Epoch: 10
+2026-10-02 14:14:17,278 - trainer - INFO -    最佳验证AUC: 0.9279
+2026-10-02 14:14:17,278 - trainer - INFO -    最终学习率: 3.9e-04
+2026-10-02 14:14:17,278 - trainer - INFO - 
+🎯 测试集性能:
+2026-10-02 14:14:17,278 - trainer - INFO -    AUC:       0.9216
+2026-10-02 14:14:17,278 - trainer - INFO -    AUPR:      0.9239
+2026-10-02 14:14:17,278 - trainer - INFO -    F1:        0.8479
+2026-10-02 14:14:17,278 - trainer - INFO -    Accuracy:  0.8513
+2026-10-02 14:14:17,278 - trainer - INFO -    Precision: 0.8716
+2026-10-02 14:14:17,278 - trainer - INFO -    Recall:    0.8255
+2026-10-02 14:14:17,347 - trainer - INFO - 
+💾 模型已保存: checkpoints/kfold/fold_1_model.pth
+2026-10-02 14:14:17,347 - trainer - INFO - ============================================================
+
+2026-10-02 14:14:17,620 - trainer - INFO - 
+============================================================
+2026-10-02 14:14:17,621 - trainer - INFO - 🔄 开始训练第 2/5 折
+2026-10-02 14:14:17,621 - trainer - INFO - ============================================================
+2026-10-02 14:14:17,621 - trainer - INFO -    训练样本数: 13,673
+2026-10-02 14:14:17,621 - trainer - INFO -    验证样本数: 3,421
+2026-10-02 14:14:17,621 - trainer - INFO -    批次大小: 1024
+2026-10-02 14:14:17,621 - trainer - INFO -    学习率: 0.0008
+2026-10-02 14:14:17,621 - trainer - INFO -    最大轮数: 100
+2026-10-02 14:14:17,621 - trainer - INFO -    早停耐心: 15
+2026-10-02 14:14:17,621 - models - INFO - 🧠 创建XGFT模型:
+2026-10-02 14:14:17,621 - models - INFO -    节点特征维度: {'miRNA': 65, 'Gene': 65, 'Pathway': 768, 'Disease': 768}
+2026-10-02 14:14:17,621 - models - INFO -    目标隐藏维度: 128
+2026-10-02 14:14:17,622 - models - INFO -   为 miRNA 创建投影层: 65 -> 128
+2026-10-02 14:14:17,622 - models - INFO -   为 Gene 创建投影层: 65 -> 128
+2026-10-02 14:14:17,622 - models - INFO -   为 Pathway 创建投影层: 768 -> 128
+2026-10-02 14:14:17,623 - models - INFO -   为 Disease 创建投影层: 768 -> 128
+2026-10-02 14:14:17,632 - models - INFO - ✅ XGFT_Layer初始化: 128维, 4头, 高效全局注意力
+2026-10-02 14:14:17,632 - models - INFO -   添加XGFT层 1/3
+2026-10-02 14:14:17,641 - models - INFO - ✅ XGFT_Layer初始化: 128维, 4头, 高效全局注意力
+2026-10-02 14:14:17,641 - models - INFO -   添加XGFT层 2/3
+2026-10-02 14:14:17,650 - models - INFO - ✅ XGFT_Layer初始化: 128维, 4头, 高效全局注意力
+2026-10-02 14:14:17,650 - models - INFO -   添加XGFT层 3/3
+2026-10-02 14:14:17,650 - models - INFO -   [EARLY-FUSION] 配对特征编码器: 6 -> 64
+2026-10-02 14:14:17,652 - models - INFO -   [MECHKG] 证据头启用: K=16, r=0.2, 残差=False, 通道=['collab', 'ppi', 'pathway', 'disease', 'sequence'], 通道失活 图谱=0.0 序列=0.0, 疾病特异性=True, 关闭通道=collab, 线性打分=True
+2026-10-02 14:14:17,652 - models - INFO -   [GLOBAL-TOKENS] M=0 (已关闭全局分支)
+2026-10-02 14:14:17,652 - models - INFO -   [ENCODER] 编码器=hgt
+2026-10-02 14:14:17,652 - models - INFO - ✅ XGFT_Model 初始化完成 (交互式局部-全局融合)
+2026-10-02 14:14:17,652 - models - INFO -    节点类型投影层: ['miRNA', 'Gene', 'Pathway', 'Disease']
+2026-10-02 14:14:17,652 - models - INFO -    XGFT层数: 3
+2026-10-02 14:14:17,653 - models - INFO -    隐藏维度: 128
+2026-10-02 14:14:17,663 - models - INFO - ✅ 创建XGFT模型 (交互式局部-全局融合)
+2026-10-02 14:14:17,664 - models - INFO -    总参数: 2,652,603
+2026-10-02 14:14:17,664 - models - INFO -    可训练参数: 2,652,603
+2026-10-02 14:14:17,664 - models - INFO -    投影层参数: 214,784 (8.1%)
+2026-10-02 14:14:17,664 - models - INFO -    XGFT层参数: 2,227,050 (84.0%)
+2026-10-02 14:14:17,830 - trainer - INFO -    [NEG-MATCH] hard 验证集: 正例 1721 + 度匹配负例 1721
+2026-10-02 14:21:16,771 - trainer - INFO - [MECHKG-CONTRIB] fold=2 pos: collab=+0.000, ppi=-0.528, pathway=+1.129, disease=+0.239, sequence=+1.454, residual=+0.000, 机制占比=1.000
+2026-10-02 14:21:16,835 - trainer - INFO - [MECHKG-CONTRIB] fold=2 neg: collab=+0.000, ppi=-1.967, pathway=-0.005, disease=-0.217, sequence=-0.088, residual=+0.000, 机制占比=1.000
+2026-10-02 14:21:16,858 - trainer - INFO - [MECHKG-COVER] fold=2 collab_mirna=0.000, collab_gene=0.000, ppi=0.134, pathway=0.673, disease=0.524
+2026-10-02 14:21:16,858 - trainer - INFO - 
+📋 第 2 折训练总结:
+2026-10-02 14:21:16,858 - trainer - INFO -    训练轮数: 24
+2026-10-02 14:21:16,858 - trainer - INFO -    最佳Epoch: 9
+2026-10-02 14:21:16,858 - trainer - INFO -    最佳验证AUC: 0.9284
+2026-10-02 14:21:16,858 - trainer - INFO -    最终学习率: 3.9e-04
+2026-10-02 14:21:16,858 - trainer - INFO - 
+🎯 测试集性能:
+2026-10-02 14:21:16,858 - trainer - INFO -    AUC:       0.9231
+2026-10-02 14:21:16,858 - trainer - INFO -    AUPR:      0.9273
+2026-10-02 14:21:16,859 - trainer - INFO -    F1:        0.8441
+2026-10-02 14:21:16,859 - trainer - INFO -    Accuracy:  0.8499
+2026-10-02 14:21:16,859 - trainer - INFO -    Precision: 0.8825
+2026-10-02 14:21:16,859 - trainer - INFO -    Recall:    0.8090
+2026-10-02 14:21:16,931 - trainer - INFO - 
+💾 模型已保存: checkpoints/kfold/fold_2_model.pth
+2026-10-02 14:21:16,932 - trainer - INFO - ============================================================
+
+2026-10-02 14:21:17,143 - trainer - INFO - 
+============================================================
+2026-10-02 14:21:17,144 - trainer - INFO - 🔄 开始训练第 3/5 折
+2026-10-02 14:21:17,144 - trainer - INFO - ============================================================
+2026-10-02 14:21:17,144 - trainer - INFO -    训练样本数: 13,680
+2026-10-02 14:21:17,144 - trainer - INFO -    验证样本数: 3,414
+2026-10-02 14:21:17,144 - trainer - INFO -    批次大小: 1024
+2026-10-02 14:21:17,144 - trainer - INFO -    学习率: 0.0008
+2026-10-02 14:21:17,144 - trainer - INFO -    最大轮数: 100
+2026-10-02 14:21:17,144 - trainer - INFO -    早停耐心: 15
+2026-10-02 14:21:17,144 - models - INFO - 🧠 创建XGFT模型:
+2026-10-02 14:21:17,144 - models - INFO -    节点特征维度: {'miRNA': 65, 'Gene': 65, 'Pathway': 768, 'Disease': 768}
+2026-10-02 14:21:17,144 - models - INFO -    目标隐藏维度: 128
+2026-10-02 14:21:17,145 - models - INFO -   为 miRNA 创建投影层: 65 -> 128
+2026-10-02 14:21:17,145 - models - INFO -   为 Gene 创建投影层: 65 -> 128
+2026-10-02 14:21:17,145 - models - INFO -   为 Pathway 创建投影层: 768 -> 128
+2026-10-02 14:21:17,146 - models - INFO -   为 Disease 创建投影层: 768 -> 128
+2026-10-02 14:21:17,155 - models - INFO - ✅ XGFT_Layer初始化: 128维, 4头, 高效全局注意力
+2026-10-02 14:21:17,155 - models - INFO -   添加XGFT层 1/3
+2026-10-02 14:21:17,163 - models - INFO - ✅ XGFT_Layer初始化: 128维, 4头, 高效全局注意力
+2026-10-02 14:21:17,163 - models - INFO -   添加XGFT层 2/3
+2026-10-02 14:21:17,171 - models - INFO - ✅ XGFT_Layer初始化: 128维, 4头, 高效全局注意力
+2026-10-02 14:21:17,172 - models - INFO -   添加XGFT层 3/3
+2026-10-02 14:21:17,172 - models - INFO -   [EARLY-FUSION] 配对特征编码器: 6 -> 64
+2026-10-02 14:21:17,174 - models - INFO -   [MECHKG] 证据头启用: K=16, r=0.2, 残差=False, 通道=['collab', 'ppi', 'pathway', 'disease', 'sequence'], 通道失活 图谱=0.0 序列=0.0, 疾病特异性=True, 关闭通道=collab, 线性打分=True
+2026-10-02 14:21:17,174 - models - INFO -   [GLOBAL-TOKENS] M=0 (已关闭全局分支)
+2026-10-02 14:21:17,174 - models - INFO -   [ENCODER] 编码器=hgt
+2026-10-02 14:21:17,174 - models - INFO - ✅ XGFT_Model 初始化完成 (交互式局部-全局融合)
+2026-10-02 14:21:17,174 - models - INFO -    节点类型投影层: ['miRNA', 'Gene', 'Pathway', 'Disease']
+2026-10-02 14:21:17,174 - models - INFO -    XGFT层数: 3
+2026-10-02 14:21:17,174 - models - INFO -    隐藏维度: 128
+2026-10-02 14:21:17,185 - models - INFO - ✅ 创建XGFT模型 (交互式局部-全局融合)
+2026-10-02 14:21:17,186 - models - INFO -    总参数: 2,652,603
+2026-10-02 14:21:17,186 - models - INFO -    可训练参数: 2,652,603
+2026-10-02 14:21:17,186 - models - INFO -    投影层参数: 214,784 (8.1%)
+2026-10-02 14:21:17,187 - models - INFO -    XGFT层参数: 2,227,050 (84.0%)
+2026-10-02 14:21:17,415 - trainer - INFO -    [NEG-MATCH] hard 验证集: 正例 1716 + 度匹配负例 1716
+2026-10-02 14:27:41,576 - trainer - INFO - [MECHKG-CONTRIB] fold=3 pos: collab=+0.000, ppi=-0.680, pathway=+0.913, disease=+0.381, sequence=+1.565, residual=+0.000, 机制占比=1.000
+2026-10-02 14:27:41,585 - trainer - INFO - [MECHKG-CONTRIB] fold=3 neg: collab=+0.000, ppi=-1.975, pathway=-0.170, disease=+0.007, sequence=+0.055, residual=+0.000, 机制占比=1.000
+2026-10-02 14:27:41,586 - trainer - INFO - [MECHKG-COVER] fold=3 collab_mirna=0.000, collab_gene=0.000, ppi=0.134, pathway=0.649, disease=0.530
+2026-10-02 14:27:41,586 - trainer - INFO - 
+📋 第 3 折训练总结:
+2026-10-02 14:27:41,586 - trainer - INFO -    训练轮数: 22
+2026-10-02 14:27:41,586 - trainer - INFO -    最佳Epoch: 7
+2026-10-02 14:27:41,586 - trainer - INFO -    最佳验证AUC: 0.9229
+2026-10-02 14:27:41,586 - trainer - INFO -    最终学习率: 3.9e-04
+2026-10-02 14:27:41,586 - trainer - INFO - 
+🎯 测试集性能:
+2026-10-02 14:27:41,586 - trainer - INFO -    AUC:       0.9188
+2026-10-02 14:27:41,587 - trainer - INFO -    AUPR:      0.9238
+2026-10-02 14:27:41,587 - trainer - INFO -    F1:        0.8384
+2026-10-02 14:27:41,587 - trainer - INFO -    Accuracy:  0.8436
+2026-10-02 14:27:41,587 - trainer - INFO -    Precision: 0.8716
+2026-10-02 14:27:41,587 - trainer - INFO -    Recall:    0.8077
+2026-10-02 14:27:41,661 - trainer - INFO - 
+💾 模型已保存: checkpoints/kfold/fold_3_model.pth
+2026-10-02 14:27:41,661 - trainer - INFO - ============================================================
+
+2026-10-02 14:27:41,901 - trainer - INFO - 
+============================================================
+2026-10-02 14:27:41,901 - trainer - INFO - 🔄 开始训练第 4/5 折
+2026-10-02 14:27:41,901 - trainer - INFO - ============================================================
+2026-10-02 14:27:41,901 - trainer - INFO -    训练样本数: 13,692
+2026-10-02 14:27:41,901 - trainer - INFO -    验证样本数: 3,402
+2026-10-02 14:27:41,901 - trainer - INFO -    批次大小: 1024
+2026-10-02 14:27:41,901 - trainer - INFO -    学习率: 0.0008
+2026-10-02 14:27:41,901 - trainer - INFO -    最大轮数: 100
+2026-10-02 14:27:41,901 - trainer - INFO -    早停耐心: 15
+2026-10-02 14:27:41,901 - models - INFO - 🧠 创建XGFT模型:
+2026-10-02 14:27:41,902 - models - INFO -    节点特征维度: {'miRNA': 65, 'Gene': 65, 'Pathway': 768, 'Disease': 768}
+2026-10-02 14:27:41,902 - models - INFO -    目标隐藏维度: 128
+2026-10-02 14:27:41,902 - models - INFO -   为 miRNA 创建投影层: 65 -> 128
+2026-10-02 14:27:41,902 - models - INFO -   为 Gene 创建投影层: 65 -> 128
+2026-10-02 14:27:41,903 - models - INFO -   为 Pathway 创建投影层: 768 -> 128
+2026-10-02 14:27:41,903 - models - INFO -   为 Disease 创建投影层: 768 -> 128
+2026-10-02 14:27:41,912 - models - INFO - ✅ XGFT_Layer初始化: 128维, 4头, 高效全局注意力
+2026-10-02 14:27:41,912 - models - INFO -   添加XGFT层 1/3
+2026-10-02 14:27:41,920 - models - INFO - ✅ XGFT_Layer初始化: 128维, 4头, 高效全局注意力
+2026-10-02 14:27:41,920 - models - INFO -   添加XGFT层 2/3
+2026-10-02 14:27:41,928 - models - INFO - ✅ XGFT_Layer初始化: 128维, 4头, 高效全局注意力
+2026-10-02 14:27:41,928 - models - INFO -   添加XGFT层 3/3
+2026-10-02 14:27:41,928 - models - INFO -   [EARLY-FUSION] 配对特征编码器: 6 -> 64
+2026-10-02 14:27:41,931 - models - INFO -   [MECHKG] 证据头启用: K=16, r=0.2, 残差=False, 通道=['collab', 'ppi', 'pathway', 'disease', 'sequence'], 通道失活 图谱=0.0 序列=0.0, 疾病特异性=True, 关闭通道=collab, 线性打分=True
+2026-10-02 14:27:41,931 - models - INFO -   [GLOBAL-TOKENS] M=0 (已关闭全局分支)
+2026-10-02 14:27:41,931 - models - INFO -   [ENCODER] 编码器=hgt
+2026-10-02 14:27:41,931 - models - INFO - ✅ XGFT_Model 初始化完成 (交互式局部-全局融合)
+2026-10-02 14:27:41,931 - models - INFO -    节点类型投影层: ['miRNA', 'Gene', 'Pathway', 'Disease']
+2026-10-02 14:27:41,931 - models - INFO -    XGFT层数: 3
+2026-10-02 14:27:41,931 - models - INFO -    隐藏维度: 128
+2026-10-02 14:27:41,941 - models - INFO - ✅ 创建XGFT模型 (交互式局部-全局融合)
+2026-10-02 14:27:41,942 - models - INFO -    总参数: 2,652,603
+2026-10-02 14:27:41,942 - models - INFO -    可训练参数: 2,652,603
+2026-10-02 14:27:41,943 - models - INFO -    投影层参数: 214,784 (8.1%)
+2026-10-02 14:27:41,943 - models - INFO -    XGFT层参数: 2,227,050 (84.0%)
+2026-10-02 14:27:42,723 - trainer - INFO -    [NEG-MATCH] hard 验证集: 正例 1712 + 度匹配负例 1712
+2026-10-02 14:34:22,472 - trainer - INFO - [MECHKG-CONTRIB] fold=4 pos: collab=+0.000, ppi=-0.644, pathway=+0.478, disease=+0.275, sequence=+2.000, residual=+0.000, 机制占比=1.000
+2026-10-02 14:34:22,536 - trainer - INFO - [MECHKG-CONTRIB] fold=4 neg: collab=+0.000, ppi=-2.008, pathway=-0.337, disease=-0.126, sequence=+0.393, residual=+0.000, 机制占比=1.000
+2026-10-02 14:34:22,559 - trainer - INFO - [MECHKG-COVER] fold=4 collab_mirna=0.000, collab_gene=0.000, ppi=0.133, pathway=0.681, disease=0.543
+2026-10-02 14:34:22,559 - trainer - INFO - 
+📋 第 4 折训练总结:
+2026-10-02 14:34:22,559 - trainer - INFO -    训练轮数: 23
+2026-10-02 14:34:22,559 - trainer - INFO -    最佳Epoch: 8
+2026-10-02 14:34:22,559 - trainer - INFO -    最佳验证AUC: 0.9221
+2026-10-02 14:34:22,559 - trainer - INFO -    最终学习率: 3.9e-04
+2026-10-02 14:34:22,559 - trainer - INFO - 
+🎯 测试集性能:
+2026-10-02 14:34:22,559 - trainer - INFO -    AUC:       0.9207
+2026-10-02 14:34:22,559 - trainer - INFO -    AUPR:      0.9261
+2026-10-02 14:34:22,560 - trainer - INFO -    F1:        0.8356
+2026-10-02 14:34:22,560 - trainer - INFO -    Accuracy:  0.8423
+2026-10-02 14:34:22,560 - trainer - INFO -    Precision: 0.8772
+2026-10-02 14:34:22,560 - trainer - INFO -    Recall:    0.7978
+2026-10-02 14:34:22,632 - trainer - INFO - 
+💾 模型已保存: checkpoints/kfold/fold_4_model.pth
+2026-10-02 14:34:22,632 - trainer - INFO - ============================================================
+
+2026-10-02 14:34:22,785 - trainer - INFO - 
+============================================================
+2026-10-02 14:34:22,785 - trainer - INFO - 🔄 开始训练第 5/5 折
+2026-10-02 14:34:22,785 - trainer - INFO - ============================================================
+2026-10-02 14:34:22,785 - trainer - INFO -    训练样本数: 13,675
+2026-10-02 14:34:22,786 - trainer - INFO -    验证样本数: 3,419
+2026-10-02 14:34:22,786 - trainer - INFO -    批次大小: 1024
+2026-10-02 14:34:22,786 - trainer - INFO -    学习率: 0.0008
+2026-10-02 14:34:22,786 - trainer - INFO -    最大轮数: 100
+2026-10-02 14:34:22,786 - trainer - INFO -    早停耐心: 15
+2026-10-02 14:34:22,786 - models - INFO - 🧠 创建XGFT模型:
+2026-10-02 14:34:22,786 - models - INFO -    节点特征维度: {'miRNA': 65, 'Gene': 65, 'Pathway': 768, 'Disease': 768}
+2026-10-02 14:34:22,786 - models - INFO -    目标隐藏维度: 128
+2026-10-02 14:34:22,786 - models - INFO -   为 miRNA 创建投影层: 65 -> 128
+2026-10-02 14:34:22,787 - models - INFO -   为 Gene 创建投影层: 65 -> 128
+2026-10-02 14:34:22,787 - models - INFO -   为 Pathway 创建投影层: 768 -> 128
+2026-10-02 14:34:22,788 - models - INFO -   为 Disease 创建投影层: 768 -> 128
+2026-10-02 14:34:22,797 - models - INFO - ✅ XGFT_Layer初始化: 128维, 4头, 高效全局注意力
+2026-10-02 14:34:22,797 - models - INFO -   添加XGFT层 1/3
+2026-10-02 14:34:22,805 - models - INFO - ✅ XGFT_Layer初始化: 128维, 4头, 高效全局注意力
+2026-10-02 14:34:22,805 - models - INFO -   添加XGFT层 2/3
+2026-10-02 14:34:22,813 - models - INFO - ✅ XGFT_Layer初始化: 128维, 4头, 高效全局注意力
+2026-10-02 14:34:22,813 - models - INFO -   添加XGFT层 3/3
+2026-10-02 14:34:22,813 - models - INFO -   [EARLY-FUSION] 配对特征编码器: 6 -> 64
+2026-10-02 14:34:22,815 - models - INFO -   [MECHKG] 证据头启用: K=16, r=0.2, 残差=False, 通道=['collab', 'ppi', 'pathway', 'disease', 'sequence'], 通道失活 图谱=0.0 序列=0.0, 疾病特异性=True, 关闭通道=collab, 线性打分=True
+2026-10-02 14:34:22,815 - models - INFO -   [GLOBAL-TOKENS] M=0 (已关闭全局分支)
+2026-10-02 14:34:22,815 - models - INFO -   [ENCODER] 编码器=hgt
+2026-10-02 14:34:22,815 - models - INFO - ✅ XGFT_Model 初始化完成 (交互式局部-全局融合)
+2026-10-02 14:34:22,815 - models - INFO -    节点类型投影层: ['miRNA', 'Gene', 'Pathway', 'Disease']
+2026-10-02 14:34:22,815 - models - INFO -    XGFT层数: 3
+2026-10-02 14:34:22,816 - models - INFO -    隐藏维度: 128
+2026-10-02 14:34:22,826 - models - INFO - ✅ 创建XGFT模型 (交互式局部-全局融合)
+2026-10-02 14:34:22,827 - models - INFO -    总参数: 2,652,603
+2026-10-02 14:34:22,827 - models - INFO -    可训练参数: 2,652,603
+2026-10-02 14:34:22,827 - models - INFO -    投影层参数: 214,784 (8.1%)
+2026-10-02 14:34:22,827 - models - INFO -    XGFT层参数: 2,227,050 (84.0%)
+2026-10-02 14:34:23,036 - trainer - INFO -    [NEG-MATCH] hard 验证集: 正例 1720 + 度匹配负例 1720
+2026-10-02 14:40:55,974 - trainer - INFO - [MECHKG-CONTRIB] fold=5 pos: collab=+0.000, ppi=-0.505, pathway=+1.222, disease=+0.160, sequence=+0.997, residual=+0.000, 机制占比=1.000
+2026-10-02 14:40:56,038 - trainer - INFO - [MECHKG-CONTRIB] fold=5 neg: collab=+0.000, ppi=-2.031, pathway=+0.276, disease=-0.090, sequence=-0.446, residual=+0.000, 机制占比=1.000
+2026-10-02 14:40:56,061 - trainer - INFO - [MECHKG-COVER] fold=5 collab_mirna=0.000, collab_gene=0.000, ppi=0.130, pathway=0.670, disease=0.526
+2026-10-02 14:40:56,061 - trainer - INFO - 
+📋 第 5 折训练总结:
+2026-10-02 14:40:56,061 - trainer - INFO -    训练轮数: 26
+2026-10-02 14:40:56,061 - trainer - INFO -    最佳Epoch: 11
+2026-10-02 14:40:56,061 - trainer - INFO -    最佳验证AUC: 0.9267
+2026-10-02 14:40:56,061 - trainer - INFO -    最终学习率: 3.9e-04
+2026-10-02 14:40:56,061 - trainer - INFO - 
+🎯 测试集性能:
+2026-10-02 14:40:56,061 - trainer - INFO -    AUC:       0.9164
+2026-10-02 14:40:56,061 - trainer - INFO -    AUPR:      0.9209
+2026-10-02 14:40:56,061 - trainer - INFO -    F1:        0.8272
+2026-10-02 14:40:56,061 - trainer - INFO -    Accuracy:  0.8330
+2026-10-02 14:40:56,061 - trainer - INFO -    Precision: 0.8612
+2026-10-02 14:40:56,061 - trainer - INFO -    Recall:    0.7958
+2026-10-02 14:40:56,133 - trainer - INFO - 
+💾 模型已保存: checkpoints/kfold/fold_5_model.pth
+2026-10-02 14:40:56,133 - trainer - INFO - ============================================================
+
+2026-10-02 14:40:56,278 - trainer - INFO - 🔮 计算集成预测结果...
+2026-10-02 14:40:56,313 - trainer - INFO -   平均集成 - AUC: 0.9290, AUPR: 0.9334
+2026-10-02 14:40:56,313 - trainer - INFO -   投票集成 - AUC: 0.8864, AUPR: 0.8633
+2026-10-02 14:40:56,314 - trainer - INFO - 📊 生成K折交叉验证报告...
+2026-10-02 14:40:56,314 - trainer - INFO - 
+============================================================
+2026-10-02 14:40:56,314 - trainer - INFO - 📈 K折交叉验证结果摘要
+2026-10-02 14:40:56,314 - trainer - INFO - ============================================================
+2026-10-02 14:40:56,314 - trainer - INFO - AUC       : 0.9201 ± 0.0023 [0.9164, 0.9231]
+2026-10-02 14:40:56,314 - trainer - INFO - AUPR      : 0.9244 ± 0.0022 [0.9209, 0.9273]
+2026-10-02 14:40:56,314 - trainer - INFO - F1        : 0.8387 ± 0.0072 [0.8272, 0.8479]
+2026-10-02 14:40:56,314 - trainer - INFO - Accuracy  : 0.8440 ± 0.0065 [0.8330, 0.8513]
+2026-10-02 14:40:56,314 - trainer - INFO - Precision : 0.8728 ± 0.0071 [0.8612, 0.8825]
+2026-10-02 14:40:56,314 - trainer - INFO - Recall    : 0.8071 ± 0.0106 [0.7958, 0.8255]
+2026-10-02 14:40:56,314 - trainer - INFO - 
+🎯 集成结果:
+2026-10-02 14:40:56,314 - trainer - INFO -   平均集成 - AUC: 0.9290, AUPR: 0.9334
+2026-10-02 14:40:56,314 - trainer - INFO -   投票集成 - AUC: 0.8864, AUPR: 0.8633
+2026-10-02 14:40:56,315 - trainer - INFO - ============================================================
+2026-10-02 14:40:56,316 - trainer - INFO - 📁 K折结果已保存: results/kfold/kfold_results.json
+2026-10-02 14:40:56,317 - trainer - INFO - 📁 预测结果已保存: results/kfold/ensemble_predictions.npz
+2026-10-02 14:40:56,317 - trainer - INFO - 📊 生成K折可视化...
+2026-10-02 14:41:02,793 - trainer - INFO - 📊 K折对比图已保存: plots/kfold_comparison.png
+2026-10-02 14:41:02,793 - trainer - INFO - ✅ K折交叉验证训练完成!
+2026-10-02 14:41:02,795 - main - INFO - 📊 实验结果已保存: experiments/xgft_full_biological_k-fold_20261002_144102.json
+2026-10-02 14:41:02,795 - main - INFO - ✅ XGFT训练完成!
+2026-10-02 14:41:02,795 - main - INFO - 🎉 程序执行成功完成!

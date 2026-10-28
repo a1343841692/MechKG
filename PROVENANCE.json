@@ -1,0 +1,347 @@
+[
+  {
+    "file": "code/config.py",
+    "source": "消融实验_fixed/config.py",
+    "role": "主模型运行代码"
+  },
+  {
+    "file": "code/data_loader.py",
+    "source": "消融实验_fixed/data_loader.py",
+    "role": "主模型运行代码"
+  },
+  {
+    "file": "code/models.py",
+    "source": "消融实验_fixed/models.py",
+    "role": "主模型运行代码"
+  },
+  {
+    "file": "code/mechkg.py",
+    "source": "消融实验_fixed/mechkg.py",
+    "role": "主模型运行代码"
+  },
+  {
+    "file": "code/trainer.py",
+    "source": "消融实验_fixed/trainer.py",
+    "role": "主模型运行代码"
+  },
+  {
+    "file": "code/utils.py",
+    "source": "消融实验_fixed/utils.py",
+    "role": "主模型运行代码"
+  },
+  {
+    "file": "code/main.py",
+    "source": "消融实验_fixed/main.py",
+    "role": "主模型运行代码"
+  },
+  {
+    "file": "code/prediction.py",
+    "source": "消融实验_fixed/prediction.py",
+    "role": "主模型运行代码"
+  },
+  {
+    "file": "code/run_kg_v2.py",
+    "source": "消融实验_fixed/run_kg_v2.py",
+    "role": "主模型运行代码"
+  },
+  {
+    "file": "data/processed/kg_v2_xgft_coding_nosim.csv",
+    "source": "消融实验_fixed/data_kg_v2/kg_v2_xgft_coding_nosim.csv",
+    "role": "最终模型输入或数据处理记录"
+  },
+  {
+    "file": "data/processed/kg_v2_xgft_coding_nosim.isolated_nodes.csv",
+    "source": "消融实验_fixed/data_kg_v2/kg_v2_xgft_coding_nosim.isolated_nodes.csv",
+    "role": "最终模型输入或数据处理记录"
+  },
+  {
+    "file": "data/processed/kg_v2_text_embeddings.pkl",
+    "source": "消融实验_fixed/data_kg_v2/kg_v2_text_embeddings.pkl",
+    "role": "最终模型输入或数据处理记录"
+  },
+  {
+    "file": "data/processed/pair_seq_features_coding.npz",
+    "source": "消融实验_fixed/data_kg_v2/pair_seq_features_coding.npz",
+    "role": "最终模型输入或数据处理记录"
+  },
+  {
+    "file": "data/processed/node_texts.csv",
+    "source": "消融实验_fixed/data_kg_v2/node_texts.csv",
+    "role": "最终模型输入或数据处理记录"
+  },
+  {
+    "file": "data/processed/family_assignment.csv",
+    "source": "消融实验_fixed/data_kg_v2/family_assignment.csv",
+    "role": "最终模型输入或数据处理记录"
+  },
+  {
+    "file": "data/processed/removed_noncoding_targets.csv",
+    "source": "消融实验_fixed/data_kg_v2/removed_noncoding_targets.csv",
+    "role": "最终模型输入或数据处理记录"
+  },
+  {
+    "file": "data/processed/symbol_fixes.csv",
+    "source": "消融实验_fixed/data_kg_v2/symbol_fixes.csv",
+    "role": "最终模型输入或数据处理记录"
+  },
+  {
+    "file": "data/splits/coding_named_splits.csv",
+    "source": "消融实验_fixed/splits/coding_named_splits.csv",
+    "role": "训练时固定的五折划分和独立测试集"
+  },
+  {
+    "file": "data/splits/hard_test_pairs.csv",
+    "source": "消融实验_fixed/hard_test/hard_test_pairs.csv",
+    "role": "已冻结的端点度匹配测试集"
+  },
+  {
+    "file": "data/expression/EB++AdjustPANCAN_IlluminaHiSeq_RNASeqV2.geneExp.xena",
+    "source": "消融实验/data/data/expression/EB++AdjustPANCAN_IlluminaHiSeq_RNASeqV2.geneExp.xena",
+    "role": "完整原始表达矩阵；保留 PCA 输入的全部行列"
+  },
+  {
+    "file": "data/expression/pancanMiRs_EBadjOnProtocolPlatformWithoutRepsWithUnCorrectMiRs_08_04_16.xena",
+    "source": "消融实验/data/data/expression/pancanMiRs_EBadjOnProtocolPlatformWithoutRepsWithUnCorrectMiRs_08_04_16.xena",
+    "role": "完整原始表达矩阵；保留 PCA 输入的全部行列"
+  },
+  {
+    "file": "data/basic/interaction.csv",
+    "source": "消融实验/data/data/basic/interaction.csv",
+    "role": "原始实验支持作用对；用于实体名称识别"
+  },
+  {
+    "file": "data/sequences/sequences.pkl",
+    "source": "trusted_pipeline/artifacts/evidence_v1/sequence_sources/sequences.pkl",
+    "role": "冻结的成熟 miRNA 与 canonical 3UTR 序列"
+  },
+  {
+    "file": "results/main_model/a1_popularity/degree_r2.csv",
+    "source": "消融实验_fixed/mk_ns_nodrop/a1_popularity/degree_r2.csv",
+    "role": "主模型已有结果；未经重算或改写"
+  },
+  {
+    "file": "results/main_model/a1_popularity/stratified_auc.csv",
+    "source": "消融实验_fixed/mk_ns_nodrop/a1_popularity/stratified_auc.csv",
+    "role": "主模型已有结果；未经重算或改写"
+  },
+  {
+    "file": "results/main_model/a1_popularity/stratified_auc_by_fold.csv",
+    "source": "消融实验_fixed/mk_ns_nodrop/a1_popularity/stratified_auc_by_fold.csv",
+    "role": "主模型已有结果；未经重算或改写"
+  },
+  {
+    "file": "results/main_model/a1_popularity/summary.md",
+    "source": "消融实验_fixed/mk_ns_nodrop/a1_popularity/summary.md",
+    "role": "主模型已有结果；未经重算或改写"
+  },
+  {
+    "file": "results/main_model/a2_division/by_site.csv",
+    "source": "消融实验_fixed/mk_ns_nodrop/a2_division/by_site.csv",
+    "role": "主模型已有结果；未经重算或改写"
+  },
+  {
+    "file": "results/main_model/a2_division/dominance.csv",
+    "source": "消融实验_fixed/mk_ns_nodrop/a2_division/dominance.csv",
+    "role": "主模型已有结果；未经重算或改写"
+  },
+  {
+    "file": "results/main_model/a2_division/site_subsets_strat.csv",
+    "source": "消融实验_fixed/mk_ns_nodrop/a2_division/site_subsets_strat.csv",
+    "role": "主模型已有结果；未经重算或改写"
+  },
+  {
+    "file": "results/main_model/a2_division/summary.md",
+    "source": "消融实验_fixed/mk_ns_nodrop/a2_division/summary.md",
+    "role": "主模型已有结果；未经重算或改写"
+  },
+  {
+    "file": "results/main_model/a3_sibling/by_family.csv",
+    "source": "消融实验_fixed/mk_ns_nodrop/a3_sibling/by_family.csv",
+    "role": "主模型已有结果；未经重算或改写"
+  },
+  {
+    "file": "results/main_model/a3_sibling/channels.csv",
+    "source": "消融实验_fixed/mk_ns_nodrop/a3_sibling/channels.csv",
+    "role": "主模型已有结果；未经重算或改写"
+  },
+  {
+    "file": "results/main_model/a3_sibling/comparisons.csv",
+    "source": "消融实验_fixed/mk_ns_nodrop/a3_sibling/comparisons.csv",
+    "role": "主模型已有结果；未经重算或改写"
+  },
+  {
+    "file": "results/main_model/a3_sibling/strata.csv",
+    "source": "消融实验_fixed/mk_ns_nodrop/a3_sibling/strata.csv",
+    "role": "主模型已有结果；未经重算或改写"
+  },
+  {
+    "file": "results/main_model/a3_sibling/summary.md",
+    "source": "消融实验_fixed/mk_ns_nodrop/a3_sibling/summary.md",
+    "role": "主模型已有结果；未经重算或改写"
+  },
+  {
+    "file": "results/main_model/a4_stability/channel_rank.csv",
+    "source": "消融实验_fixed/mk_ns_nodrop/a4_stability/channel_rank.csv",
+    "role": "主模型已有结果；未经重算或改写"
+  },
+  {
+    "file": "results/main_model/a4_stability/evidence_jaccard.csv",
+    "source": "消融实验_fixed/mk_ns_nodrop/a4_stability/evidence_jaccard.csv",
+    "role": "主模型已有结果；未经重算或改写"
+  },
+  {
+    "file": "results/main_model/a4_stability/summary.md",
+    "source": "消融实验_fixed/mk_ns_nodrop/a4_stability/summary.md",
+    "role": "主模型已有结果；未经重算或改写"
+  },
+  {
+    "file": "results/main_model/evidence_adjusted/cases.csv",
+    "source": "消融实验_fixed/mk_ns_nodrop/evidence_adjusted/cases.csv",
+    "role": "主模型已有结果；未经重算或改写"
+  },
+  {
+    "file": "results/main_model/evidence_adjusted/checks.csv",
+    "source": "消融实验_fixed/mk_ns_nodrop/evidence_adjusted/checks.csv",
+    "role": "主模型已有结果；未经重算或改写"
+  },
+  {
+    "file": "results/main_model/evidence_adjusted/fit.csv",
+    "source": "消融实验_fixed/mk_ns_nodrop/evidence_adjusted/fit.csv",
+    "role": "主模型已有结果；未经重算或改写"
+  },
+  {
+    "file": "results/main_model/evidence_adjusted/summary.md",
+    "source": "消融实验_fixed/mk_ns_nodrop/evidence_adjusted/summary.md",
+    "role": "主模型已有结果；未经重算或改写"
+  },
+  {
+    "file": "results/main_model/interpret/contributions_test.csv",
+    "source": "消融实验_fixed/mk_ns_nodrop/interpret/contributions_test.csv",
+    "role": "主模型已有结果；未经重算或改写"
+  },
+  {
+    "file": "results/main_model/interpret/contributions_val.csv",
+    "source": "消融实验_fixed/mk_ns_nodrop/interpret/contributions_val.csv",
+    "role": "主模型已有结果；未经重算或改写"
+  },
+  {
+    "file": "results/main_model/interpret/evidence_test.csv",
+    "source": "消融实验_fixed/mk_ns_nodrop/interpret/evidence_test.csv",
+    "role": "主模型已有结果；未经重算或改写"
+  },
+  {
+    "file": "results/main_model/interpret/evidence_val.csv",
+    "source": "消融实验_fixed/mk_ns_nodrop/interpret/evidence_val.csv",
+    "role": "主模型已有结果；未经重算或改写"
+  },
+  {
+    "file": "results/main_model/interpret/fidelity.csv",
+    "source": "消融实验_fixed/mk_ns_nodrop/interpret/fidelity.csv",
+    "role": "主模型已有结果；未经重算或改写"
+  },
+  {
+    "file": "results/main_model/interpret/intervention.csv",
+    "source": "消融实验_fixed/mk_ns_nodrop/interpret/intervention.csv",
+    "role": "主模型已有结果；未经重算或改写"
+  },
+  {
+    "file": "results/main_model/interpret/stability_test.csv",
+    "source": "消融实验_fixed/mk_ns_nodrop/interpret/stability_test.csv",
+    "role": "主模型已有结果；未经重算或改写"
+  },
+  {
+    "file": "results/main_model/logs/training_20261002_140506.log",
+    "source": "消融实验_fixed/mk_ns_nodrop/logs/training_20261002_140506.log",
+    "role": "主模型已有结果；未经重算或改写"
+  },
+  {
+    "file": "results/main_model/plots/fold_1_training_curves.png",
+    "source": "消融实验_fixed/mk_ns_nodrop/plots/fold_1_training_curves.png",
+    "role": "主模型已有结果；未经重算或改写"
+  },
+  {
+    "file": "results/main_model/plots/fold_2_training_curves.png",
+    "source": "消融实验_fixed/mk_ns_nodrop/plots/fold_2_training_curves.png",
+    "role": "主模型已有结果；未经重算或改写"
+  },
+  {
+    "file": "results/main_model/plots/fold_3_training_curves.png",
+    "source": "消融实验_fixed/mk_ns_nodrop/plots/fold_3_training_curves.png",
+    "role": "主模型已有结果；未经重算或改写"
+  },
+  {
+    "file": "results/main_model/plots/fold_4_training_curves.png",
+    "source": "消融实验_fixed/mk_ns_nodrop/plots/fold_4_training_curves.png",
+    "role": "主模型已有结果；未经重算或改写"
+  },
+  {
+    "file": "results/main_model/plots/fold_5_training_curves.png",
+    "source": "消融实验_fixed/mk_ns_nodrop/plots/fold_5_training_curves.png",
+    "role": "主模型已有结果；未经重算或改写"
+  },
+  {
+    "file": "results/main_model/plots/kfold_comparison.png",
+    "source": "消融实验_fixed/mk_ns_nodrop/plots/kfold_comparison.png",
+    "role": "主模型已有结果；未经重算或改写"
+  },
+  {
+    "file": "results/main_model/results/kfold/ensemble_predictions.npz",
+    "source": "消融实验_fixed/mk_ns_nodrop/results/kfold/ensemble_predictions.npz",
+    "role": "主模型已有结果；未经重算或改写"
+  },
+  {
+    "file": "results/main_model/results/kfold/kfold_results.json",
+    "source": "消融实验_fixed/mk_ns_nodrop/results/kfold/kfold_results.json",
+    "role": "主模型已有结果；未经重算或改写"
+  },
+  {
+    "file": "results/main_model/results/kfold/named_splits.csv",
+    "source": "消融实验_fixed/mk_ns_nodrop/results/kfold/named_splits.csv",
+    "role": "主模型已有结果；未经重算或改写"
+  },
+  {
+    "file": "results/main_model/run.log",
+    "source": "消融实验_fixed/mk_ns_nodrop.log",
+    "role": "原始主模型完整运行日志"
+  },
+  {
+    "file": "results/hard_test/predictions.npz",
+    "source": "消融实验_fixed/hard_test/mk_ns_nodrop_nosim_predictions.npz",
+    "role": "主模型原始 standard/hard 各折预测"
+  },
+  {
+    "file": "results/hard_test/hard_test_folds_nosim.csv",
+    "source": "消融实验_fixed/hard_test/hard_test_folds_nosim.csv",
+    "role": "仅提取主模型行，数值未改写"
+  },
+  {
+    "file": "results/hard_test/hard_test_results_nosim.csv",
+    "source": "消融实验_fixed/hard_test/hard_test_results_nosim.csv",
+    "role": "仅提取主模型行，数值未改写"
+  },
+  {
+    "file": "models/fold_1_model.pth",
+    "source": "消融实验_fixed/mk_ns_nodrop/checkpoints/kfold/fold_1_model.pth",
+    "role": "便携权重：全部参数逐张量一致；移除优化器状态，元数据转原生类型"
+  },
+  {
+    "file": "models/fold_2_model.pth",
+    "source": "消融实验_fixed/mk_ns_nodrop/checkpoints/kfold/fold_2_model.pth",
+    "role": "便携权重：全部参数逐张量一致；移除优化器状态，元数据转原生类型"
+  },
+  {
+    "file": "models/fold_3_model.pth",
+    "source": "消融实验_fixed/mk_ns_nodrop/checkpoints/kfold/fold_3_model.pth",
+    "role": "便携权重：全部参数逐张量一致；移除优化器状态，元数据转原生类型"
+  },
+  {
+    "file": "models/fold_4_model.pth",
+    "source": "消融实验_fixed/mk_ns_nodrop/checkpoints/kfold/fold_4_model.pth",
+    "role": "便携权重：全部参数逐张量一致；移除优化器状态，元数据转原生类型"
+  },
+  {
+    "file": "models/fold_5_model.pth",
+    "source": "消融实验_fixed/mk_ns_nodrop/checkpoints/kfold/fold_5_model.pth",
+    "role": "便携权重：全部参数逐张量一致；移除优化器状态，元数据转原生类型"
+  }
+]

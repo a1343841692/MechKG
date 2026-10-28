@@ -1,0 +1,28 @@
+{
+  "ok": true,
+  "checks": {
+    "manifest_files": 85,
+    "model_files": 5,
+    "strict_checkpoint_loads": 5,
+    "triples": 200224,
+    "nodes": {
+      "miRNA": 883,
+      "Gene": 3303,
+      "Pathway": 14071,
+      "Disease": 4199
+    },
+    "independent_test_pairs": 3012,
+    "hard_test_pairs": 3026,
+    "pair_feature_shape": [
+      883,
+      3303,
+      6
+    ],
+    "split_disjointness": true,
+    "hard_endpoints_exactly_matched": true,
+    "stored_prediction_metrics_match": true,
+    "training_executed": false,
+    "inference_executed": false
+  },
+  "errors": []
+}

@@ -1,0 +1,10 @@
+# Versions recorded from the local mirna environment. Select a torch build suited to your hardware.
+torch==2.13.0
+torch-geometric==2.8.0.post1
+numpy==2.1.2
+pandas==3.0.6
+scikit-learn==1.9.1
+scipy==1.18.1
+matplotlib==3.11.2
+seaborn==0.13.2
+tqdm==4.70.1
