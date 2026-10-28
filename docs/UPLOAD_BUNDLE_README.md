@@ -1,85 +1,95 @@
-# MechKG 主模型代码、数据与权重上传包
+# MechKG: Main-Model Code, Data, and Checkpoints
 
-整理日期：2026-10-26。最终主模型：`mk_ns_nodrop`，包含其 **5 折模型**。
-这是主模型独立复现包；未收录历史模型、消融或基线权重、网站文件、缓存、远程连接配置和密钥。
-原工作区中的代码、原始数据及完整训练 checkpoint 均未改动。
+**English** | [简体中文](UPLOAD_BUNDLE_README.zh-CN.md)
 
-## 上传文件
+Original bundle prepared on October 26, 2026; bilingual READMEs added on October 28, 2026.
+The final main model is **`mk_ns_nodrop`**, supplied as **five fold-specific checkpoints**.
 
-`upload_packages/` 中有 3 个可分别上传的 ZIP：
+This standalone bundle contains the inputs and code needed to reproduce the main-model workflow.
+Historical models, ablation and baseline weights, website files, caches, remote-connection settings, and credentials are excluded.
+The original workspace code, source data, and full training checkpoints were left unchanged.
 
-| 文件 | 内容 |
+## Downloadable archives
+
+The release provides three ZIP archives:
+
+| Archive | Contents |
 |---|---|
-| `MechKG_code.zip` | `code/`、主模型已有结果 `results/`、说明、模型配置与文件校验清单 |
-| `MechKG_data.zip` | 全部必要输入数据 `data/`，含完整表达矩阵、知识图谱、划分、文本/序列特征 |
-| `MechKG_models_5fold.zip` | `models/`：仅 5 个 `.pth` 权重及模型配置、来源记录 |
+| `MechKG_code.zip` | `code/`, existing main-model outputs in `results/`, documentation, model configuration, and file manifests |
+| `MechKG_data.zip` | All required inputs in `data/`, including full expression matrices, the knowledge graph, splits, and text/sequence features |
+| `MechKG_models_5fold.zip` | `models/`: exactly five `.pth` files, their configuration, and provenance records |
 
-将 3 个 ZIP **解压到同一个空目录**，得到下述结构；不需要原项目其他目录。
-如上传平台允许多个附件，直接上传三个 ZIP，另附本 README 即可。
+Extract all three archives into the **same empty directory**. No other directories from the original project are required.
+For services that accept multiple attachments, the three ZIPs can be uploaded separately with this README.
 
 ```text
-README.md
+README.md                  # Default English instructions
+README.zh-CN.md            # Simplified Chinese instructions
 MODEL_CARD.md
-PROVENANCE.json             # 文件在原项目中的来源；不包含机器绝对路径
-FILE_MANIFEST.json          # 大小、SHA-256；不包含压缩包本身
+PROVENANCE.json             # Original project-relative source paths
+FILE_MANIFEST.json          # File sizes and SHA-256 checksums
 SHA256SUMS.txt
-code/                      # 核心代码及独立训练/推理/校验入口
-data/                      # 见 data/README.md
-models/                    # fold_1_model.pth ... fold_5_model.pth
-results/                   # 已有主模型结果，未经重新训练或推理
+code/                      # Core code and standalone entry points
+data/                      # See data/README.md
+models/                    # fold_1_model.pth through fold_5_model.pth
+results/                   # Previously generated main-model outputs
 ```
 
-## 环境和运行
+## Environment and commands
 
-在解压目录打开终端。环境版本记录在 `code/environment_record.json`；本地检查使用 Python 3.13。
-使用已有匹配的 PyTorch 环境，或按硬件准备 PyTorch 后安装 `code/requirements.txt` 中的依赖。
-表达矩阵读取和 PCA 需要较多内存与 CPU 时间；本包保留原始矩阵全部行列，避免改变模型输入。
+Open a terminal in the extracted directory. Package versions are recorded in `code/environment_record.json`.
+The local release checks used Python 3.13. Use a matching PyTorch environment, or prepare a PyTorch build appropriate for your hardware before installing the dependencies in `code/requirements.txt`.
+Loading expression matrices and computing PCA require substantial memory and CPU time. All original matrix rows and columns are included to preserve the model inputs.
 
 ```bash
 python -m pip install -r code/requirements.txt
 
-# 校验所有文件、五折模型结构、划分和已保存预测，不训练、不推理
+# Check files, checkpoint structures, splits, and stored predictions on CPU.
+# This does not train the model or run inference.
 python code/check_release.py
 
-# 只检查 SHA-256 和文件个数：无需安装第三方库
+# Check SHA-256 checksums and the checkpoint count using only the standard library.
 python code/check_release.py --hash-only
 
-# 加载现有 5 折模型，逐折评估标准测试集和已冻结 hard 测试集
+# Evaluate each released fold on the standard and frozen hard test sets.
 python code/predict_main.py --protocol both --device cuda
 
-# 单折及通道贡献导出（输出到单独新目录）
+# Evaluate one fold and export channel contributions to a separate directory.
 python code/predict_main.py --fold 1 --protocol standard --explain --output runs/explain_fold1
 
-# 从头训练，结果写入 runs/retrained_main/，不会覆盖上传的权重
+# Retrain from scratch into runs/retrained_main/ without replacing released weights.
 python code/train_main.py --device cuda
 ```
 
-没有 CUDA 可将 `--device cuda` 改为 `--device cpu`；CPU 上完整训练和推理会耗时较长。
-入口自动使用包内路径，并设置 `MPLBACKEND=Agg`；环境变量 `PYTHONIOENCODING=utf-8` 可在启动 Python 前设置。
-请通过 `train_main.py` / `predict_main.py` 运行；`main.py`、`prediction.py` 保留作为原代码模块。
-预测默认分别输出五折结果，不将集成结果作为主结果。
+Replace `--device cuda` with `--device cpu` if CUDA is unavailable. Full training and inference are slower on CPU.
+The entry points resolve paths within the bundle and set `MPLBACKEND=Agg`. You can set `PYTHONIOENCODING=utf-8` before launching Python.
+Use `train_main.py` and `predict_main.py` as the entry points; `main.py` and `prediction.py` remain as modules from the original code.
+Predictions and primary metrics are reported separately for the five folds, rather than as an ensemble.
 
-## 数据和模型口径
+## Data and reporting conventions
 
-- 配置见 `models/main_model_config.json`：HGT 编码器、线性证据读出、关闭协同通道、关闭通道失活、无实体残差、无全局分支。
-- 使用 `kg_v2_xgft_coding_nosim.csv`，已移除不正确的序列相似边；保留孤立节点表。
-- 表达输入：PCA 64 维 + 可用标记，缺失填 0；配对序列特征 6 维。
-- 训练每批遮蔽监督正例，动态负样本 1:3。每折消息图只加入该折训练正例，不加入验证/测试靶向边。
-- 五折共享同一独立测试集，不是 5 次完全独立实验。结果报告单模型均值和样本标准差。
-- `results/main_model/results/kfold/kfold_results.json` 是原始结果，其中 `std` 用总体标准差；论文口径的样本标准差见 `results/main_model_summary.json`。
-- 原始结果中的 `AUPR` 对应 sklearn 的 average precision（AP）。
+- `models/main_model_config.json` specifies the final configuration: HGT encoder, linear evidence readout, collaborative channel disabled, no channel dropout, no entity residual, and no global branch.
+- `kg_v2_xgft_coding_nosim.csv` excludes the incorrect sequence-similarity edges. Its isolated-node sidecar is retained.
+- Expression inputs use 64 PCA components plus an availability indicator, with missing expression values filled with zero. Pairwise sequence inputs have six features.
+- Supervised positive edges are masked within each training batch. Dynamic negatives use a 1:3 positive-to-negative ratio. At evaluation, target edges in each fold's message graph come only from that fold's training positives, excluding validation and test targets.
+- The five folds share one independent test set and are not five fully independent experiments. Primary results use individual-model means and sample standard deviations.
+- The original `results/main_model/results/kfold/kfold_results.json` uses a population standard deviation in its `std` fields. Sample standard deviations used for reporting are in `results/main_model_summary.json`.
+- The original metric named `AUPR` is scikit-learn's average precision, abbreviated as AP.
 
-## 整理和验证范围
+## Checkpoints and verification scope
 
-`models/*.pth` 为推理便携版：全部 `model_state_dict` 张量与原始权重逐一完全相同，
-移除优化器状态、将 NumPy 元数据转成 Python 原生类型，可 `torch.load(..., weights_only=True)` 加载。
-原始 MD5、训练轮次、指标及转换记录见 `models/model_manifest.json`。
-这些权重用于推理；从头训练由原训练器完成。如需从原训练中断点续训，请保留原项目的完整 checkpoint。
+`models/*.pth` are portable inference checkpoints. Every `model_state_dict` tensor is exactly equal to its original counterpart.
+Optimizer states were removed, and NumPy metadata values were converted to native Python types, allowing loading with `torch.load(..., weights_only=True)`.
+Original MD5 checksums, training epochs, metrics, and conversion records are in `models/model_manifest.json`.
+Use the original full checkpoints if you need to resume an interrupted training run; the released entry point retrains from scratch.
 
-`code/models.py`、`mechkg.py`、`data_loader.py` 等模型核心保持原样；路径集中改为包内路径；
-训练器中端点匹配采样器改为调用 `sampling.py`，函数实现从原模块原样提取。
-本次整理执行了 CPU 文件/结构/划分/已有预测检查，未启动训练或模型推理。
-新增的训练、推理入口尚未执行完整训练或前向验证；跨平台数值复现仍需在运行环境确认，尤其是 randomized PCA 和线性代数库版本。
-`PROVENANCE.json` 记录输入与已有结果来源，`VERIFICATION.json` 记录本次检查。
+Core model implementations such as `code/models.py`, `mechkg.py`, and `data_loader.py` were preserved.
+Paths were adapted to the standalone layout. The trainer calls `sampling.py` for endpoint-matched sampling; that function was extracted unchanged from its original module.
 
-外部来源数据及预计算嵌入沿用原项目来源；此包未新增或变更第三方数据的授权，未擅自指定开源许可证。
+Release checks covered files, structures, splits, and previously saved predictions on CPU. No training or model inference was performed.
+The new training and prediction entry points have not undergone full training or forward-pass verification.
+Cross-platform numerical reproducibility still needs confirmation, especially for randomized PCA and linear algebra library versions.
+`PROVENANCE.json` records source files; `VERIFICATION.json` records the original checks, and `README_UPDATE_VERIFICATION.json` records the bilingual documentation checks.
+
+Third-party data and precomputed embeddings retain the provenance and permissions recorded in the original project.
+The bundle does not change those permissions or assign a new open-source license.

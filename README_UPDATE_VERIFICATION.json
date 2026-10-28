@@ -1,0 +1,20 @@
+{
+  "date": "2026-10-28",
+  "change": "English default READMEs with preserved Simplified Chinese versions",
+  "repository_english_default_readmes": [
+    "README.md",
+    "data/README.md",
+    "docs/UPLOAD_BUNDLE_README.md"
+  ],
+  "bundle_english_default_readmes": [
+    "README.md",
+    "data/README.md"
+  ],
+  "language_links_valid": true,
+  "local_markdown_links_valid": true,
+  "unchanged_original_payload_files": 83,
+  "main_model_checkpoints": 5,
+  "code_data_weights_results_unchanged": true,
+  "training_executed": false,
+  "inference_executed": false
+}

@@ -3,6 +3,6 @@ __pycache__/
 runs/
 upload_packages/
 data/*
-!data/README.md
+!data/README*.md
 models/*.pth
 *.zip

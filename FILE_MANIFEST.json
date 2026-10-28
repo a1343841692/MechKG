@@ -6,8 +6,8 @@
   },
   {
     "file": ".gitignore",
-    "bytes": 92,
-    "sha256": "b36f39fd0d041a3b83c4822bf701a6b54c10a9b345583a3d5297d839b766b627"
+    "bytes": 93,
+    "sha256": "95e9fda471bbe1f1cb79a582cdf2621efb87a617b04c84526db2de7f190ddc55"
   },
   {
     "file": "MODEL_CARD.md",
@@ -21,8 +21,18 @@
   },
   {
     "file": "README.md",
-    "bytes": 3662,
-    "sha256": "74ec6ce945987e39d0e248f930dd765a0b9dbf91d64eaab8e672a8ccc290d116"
+    "bytes": 4762,
+    "sha256": "d5210563c5b1b75de011646652f0a5d0ce979afb218bd1a398e59a4e9188415b"
+  },
+  {
+    "file": "README.zh-CN.md",
+    "bytes": 3711,
+    "sha256": "c96697002abd9050da4d2184f0587e03b640568360c509d62add90ff48954bcc"
+  },
+  {
+    "file": "README_UPDATE_VERIFICATION.json",
+    "bytes": 580,
+    "sha256": "4c370993253d300413701d6eb6a7476a5cd9be689b8ca403921e50f520146d93"
   },
   {
     "file": "code/check_release.py",
@@ -111,8 +121,13 @@
   },
   {
     "file": "data/README.md",
-    "bytes": 2964,
-    "sha256": "3241c2c39bda595fb8769c2927c700d34fcee88cfb0064002d5824662cadf025"
+    "bytes": 3771,
+    "sha256": "c35ca2aef617115cc52886de20cf6c4362965e2f5a0144d938937d92cdc841d2"
+  },
+  {
+    "file": "data/README.zh-CN.md",
+    "bytes": 3007,
+    "sha256": "c4d291676e5b12e569ca610554fe0ac9714e30fb65d5e6b4cb5d86e34384e027"
   },
   {
     "file": "data/basic/interaction.csv",
@@ -186,8 +201,13 @@
   },
   {
     "file": "docs/UPLOAD_BUNDLE_README.md",
-    "bytes": 5207,
-    "sha256": "f3fc1e8ff525085fdd5ed3b2e4bfb7dbf635225755a30c0556260caa728cb00c"
+    "bytes": 6619,
+    "sha256": "253447e219349f132599549c2cb014b47e0f1b26d627b47766685a154144b63e"
+  },
+  {
+    "file": "docs/UPLOAD_BUNDLE_README.zh-CN.md",
+    "bytes": 5264,
+    "sha256": "0e997de8dd68b61ac362a6d2ba4fce3aaffadb6f26ee6bd1b18150bddf3ad7d5"
   },
   {
     "file": "models/fold_1_model.pth",
