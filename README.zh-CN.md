@@ -15,6 +15,7 @@ miRNA–mRNA 靶向预测与机制通道贡献分析。这里收录最终主模�
 | `MechKG_code.zip` | 原始整理版代码、已有主模型结果与说明 | 约 14 MB |
 | `MechKG_data.zip` | 必要数据、完整表达矩阵、知识图谱、固定划分与特征 | 约 440 MB |
 | `MechKG_models_5fold.zip` | 仅主模型的 5 个便携 checkpoint | 约 49 MB |
+| `MechKG_arm_annotation_flags.zip` | 137 条独立臂注释疑似标记、序列/CLASH 证据及既有评分诊断 | 约 2.4 MB |
 | `ARCHIVE_SHA256SUMS.txt` | 三个 ZIP 的 SHA-256 | — |
 
 **使用此仓库的代码：**
@@ -32,6 +33,10 @@ python code/check_release.py
 也可下载三个 ZIP 并解压至同一个空目录；完整说明见 [原始上传包说明](docs/UPLOAD_BUNDLE_README.zh-CN.md)。
 请勿将代码 ZIP 覆盖到 Git 克隆目录：仓库 README 和校验清单针对 GitHub 版本做了调整；
 两种方式请分别使用自己的校验清单。
+
+## 臂注释疑似标记
+
+新增[臂注释数据集](annotations/arm_annotation_flags/README.zh-CN.md)：137 条疑似记录，涉及 78 个 miRNA，其中测试集 27 条。这是独立审计的待核查标记，不是已确认错误；CLASH 为附加证据而非筛选条件。[下载 ZIP](https://github.com/a1343841692/MechKG/releases/download/v1.0.1/MechKG_arm_annotation_flags.zip)，其校验值见 `MechKG_arm_annotation_flags.sha256`；原三个核心上传包及其校验值不变。
 
 ## 运行
 

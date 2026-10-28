@@ -17,6 +17,7 @@ Both this repository and its release assets are private. Sign in with a GitHub a
 | `MechKG_code.zip` | Standalone code, existing main-model results, bilingual READMEs, and verification records | 14 MB |
 | `MechKG_data.zip` | Required inputs, complete expression matrices, knowledge graph, fixed splits, and features | 440 MB |
 | `MechKG_models_5fold.zip` | The five portable checkpoints of the main model | 49 MB |
+| `MechKG_arm_annotation_flags.zip` | 137 independently audited arm-ambiguity flags, sequence/CLASH evidence, and the existing follow-up diagnostic | 2.4 MB |
 | `ARCHIVE_SHA256SUMS.txt` | SHA-256 checksums for the three ZIP archives | — |
 
 To use the code from this repository:
@@ -35,6 +36,10 @@ Alternatively, download all three ZIP archives and extract them into the same em
 See the [standalone bundle instructions](docs/UPLOAD_BUNDLE_README.md).
 Keep this approach separate from the Git clone: the repository and standalone code bundle have their own READMEs and file manifests.
 Extracting the code ZIP over a Git clone would replace the repository-specific files.
+
+## Arm-annotation flags
+
+The optional [arm-annotation dataset](annotations/arm_annotation_flags/README.md) contains 137 possible arm-ambiguity labels across 78 miRNAs (27 test labels). These are model-independent review flags, not confirmed annotation errors. CLASH indicators are supporting fields, not selection criteria. The [ZIP download](https://github.com/a1343841692/MechKG/releases/download/v1.0.1/MechKG_arm_annotation_flags.zip) has its own `MechKG_arm_annotation_flags.sha256`; the core archive checksums remain unchanged.
 
 ## Run the model
 

@@ -1,0 +1,24 @@
+{
+  "n_meta": 10112,
+  "n_scores": 16164,
+  "n_flagged": 137,
+  "n_test_flagged": 27,
+  "flagged_site_classes": {
+    "none": 104,
+    "6mer": 33
+  },
+  "audit_own_site_rows_verified": 9353,
+  "max_reconstructed_probability_error": 1.3252756558834733e-07,
+  "bias_by_model": {
+    "0": 0.01777452416718006,
+    "1": 0.01671300269663334,
+    "2": -0.02306414395570755,
+    "3": -0.020469872280955315,
+    "4": 0.006327863782644272
+  },
+  "test_models_per_pair": 5,
+  "validation_evidence_counts_verified": true,
+  "test_evidence_counts_verifiable": false,
+  "training_heldout_disjoint": true,
+  "model": "mk_ns_nodrop"
+}

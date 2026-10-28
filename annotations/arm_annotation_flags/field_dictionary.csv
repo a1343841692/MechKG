@@ -1,0 +1,20 @@
+column,description
+miRNA,"Display identifier of the flagged minor arm, preserving the project naming."
+arm,Lowercase mature-miRNA identifier; use arm + gene as the unique key.
+other_arm,Lowercase identifier of the opposite arm from the same miRBase precursor.
+other_miRNA,Display identifier of the opposite arm.
+gene,Target-gene symbol used in the frozen project.
+precursor_ids,"Shared miRBase precursor accession(s), semicolon-separated."
+role,minor_arm: the arm with fewer validated targets in the original audit; not an expression-based or universal biological major/minor assignment.
+set,val: non-test positive scored in its held-out validation fold; test: independent test positive.
+validation_fold,"1-based validation fold, 1 to 5; empty for independent test labels."
+shared,The gene is a validated target of both arms in the frozen positive-label set.
+own_site,"At least one canonical 8mer, 7mer-m8, or 7mer-A1 site for the flagged arm in the canonical 3UTR."
+other_site,At least one canonical site for the opposite arm in the canonical 3UTR.
+own_site_class,Highest site class for the flagged arm. none excludes a 6mer; 6mer is retained as a distinct class.
+other_site_class,Highest site class for the opposite arm.
+clash_own,"A CLASH source row for this arm/gene was detected in at least one WT library (WT_Detected_8 >= 1), at any target region."
+clash_other,The analogous CLASH indicator for the opposite arm and the same gene.
+clash_measurable,Both arms occur somewhere in the WT-detected CLASH source; not a declaration that this particular gene is bound.
+class,other_arm_only: canonical site absent for the flagged arm and present for the opposite arm.
+suspect,Rule-based flag for possible arm-annotation ambiguity; does not establish an annotation error.

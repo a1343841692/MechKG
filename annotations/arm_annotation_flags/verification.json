@@ -1,0 +1,19 @@
+{
+  "audit_rows": 9353,
+  "unique_flags": 137,
+  "miRNAs": 78,
+  "validation_flags": 110,
+  "test_flags": 27,
+  "own_site_classes": {
+    "none": 104,
+    "6mer": 33
+  },
+  "clash_measurable": 81,
+  "clash_own": 1,
+  "clash_other": 46,
+  "relevant_clash_rows": 80,
+  "flag_keys_match_existing_diagnostic": true,
+  "evidence_matches_frozen_inputs": true,
+  "training_executed": false,
+  "inference_executed": false
+}

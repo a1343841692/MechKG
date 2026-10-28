@@ -1,0 +1,87 @@
+[
+  {
+    "path": "splits\\coding_named_splits.csv",
+    "bytes": 3101749,
+    "sha256": "c0e290cf10f5368c2072965111e5c996a5aa2f1ee5918925ab9c1137c5d5b76e"
+  },
+  {
+    "path": "arm_annotation_20261003\\label_classes.csv",
+    "bytes": 1186502,
+    "sha256": "aff6f962379019231d396d15ce93f6385be6d96f9073de15dbcbd13a99d6e298"
+  },
+  {
+    "path": "arm_annotation.py",
+    "bytes": 7327,
+    "sha256": "0b2292ea6b43444d150d727ddcf3a797b10f76ea4dc60a0a3a622c332c0fabd4"
+  },
+  {
+    "path": "data_kg_v2\\pair_seq_features_coding.npz",
+    "bytes": 14015992,
+    "sha256": "31cf92bb27873686d3ae5dc954156c68757e3a29ea467c2b3d966a95e61122df"
+  },
+  {
+    "path": "flagged_label_scores.py",
+    "bytes": 12942,
+    "sha256": "aa8634d6e14212cd1e6e5d48e5eba5a9ca551d1d673304ac4c730a90c40cc405"
+  },
+  {
+    "path": "flagged_label_data.py",
+    "bytes": 8564,
+    "sha256": "e34ef5a2e8c162b4f34acb5ba3bf722b97a71b75ac0270406a8d8ae349b4fecd"
+  },
+  {
+    "path": "flagged_label_diagnostic_20261012\\PROTOCOL.md",
+    "bytes": 3858,
+    "sha256": "b5d7028c44068e9c0e0f00ee4e9958f9a35dbc1234741a9ab1996e8f7cfce1a7"
+  },
+  {
+    "path": "mk_ns_nodrop\\interpret\\contributions_val.csv",
+    "bytes": 1893574,
+    "sha256": "41f7703e8a4acd293bfdd448e932860074f13a78f5abcfd09e80b477688cdb11"
+  },
+  {
+    "path": "mk_ns_nodrop\\interpret\\evidence_val.csv",
+    "bytes": 13313936,
+    "sha256": "2b33a7ec18ec0cac22e7601bd6ae909f6eb422f01b5af91436e4ad9bc2e76549"
+  },
+  {
+    "path": "mk_ns_nodrop\\interpret\\contributions_test.csv",
+    "bytes": 1299402,
+    "sha256": "97abe619f63c7ee18e7ccfb73bc46d8295091ed9cce301a332c67eb903c8770d"
+  },
+  {
+    "path": "mk_ns_nodrop\\interpret\\evidence_test.csv",
+    "bytes": 11570616,
+    "sha256": "34191cc92e61e01240412c515a6954d4ce8e81471435ff800d0ffc924b7a2e6f"
+  },
+  {
+    "path": "mk_ns_nodrop\\interpret\\stability_test.csv",
+    "bytes": 145,
+    "sha256": "39f578682acb2ccbc774f5c2e6e8428e308b62bfd15afb6295999ff16287c364"
+  },
+  {
+    "path": "mk_ns_nodrop\\checkpoints\\kfold\\fold_1_model.pth",
+    "bytes": 26324098,
+    "sha256": "48d8a2b91c6278a4444c0aa6598f88e9e74bde7e44d0533e570fc52bc22b95c6"
+  },
+  {
+    "path": "mk_ns_nodrop\\checkpoints\\kfold\\fold_2_model.pth",
+    "bytes": 26324098,
+    "sha256": "2c6e63d2c2e447565c947bc79be667baddeb576b307eef631ed3eeda345fd73b"
+  },
+  {
+    "path": "mk_ns_nodrop\\checkpoints\\kfold\\fold_3_model.pth",
+    "bytes": 26324098,
+    "sha256": "da17a64d5341278483e100b2b705839cb46acb6bdd69aa0e9d0fece3216533dc"
+  },
+  {
+    "path": "mk_ns_nodrop\\checkpoints\\kfold\\fold_4_model.pth",
+    "bytes": 26324098,
+    "sha256": "388416498b17ec85f423e47db16be60d9c0da5a7382158830c5fbb8dd588cf61"
+  },
+  {
+    "path": "mk_ns_nodrop\\checkpoints\\kfold\\fold_5_model.pth",
+    "bytes": 26324098,
+    "sha256": "9b00e86506140efb2fcb63b284489e516f7899512a68c1b9790aafd52dd5606a"
+  }
+]

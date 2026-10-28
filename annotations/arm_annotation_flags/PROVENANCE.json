@@ -1,0 +1,134 @@
+[
+  {
+    "source": "消融实验_fixed/data_kg_v2/pair_seq_features_coding.npz",
+    "bytes": 14015992,
+    "sha256": "31cf92bb27873686d3ae5dc954156c68757e3a29ea467c2b3d966a95e61122df",
+    "purpose": "Original feature table; only the relevant arm/gene rows are exported as evidence"
+  },
+  {
+    "source": "消融实验_fixed/splits/coding_named_splits.csv",
+    "bytes": 3101749,
+    "sha256": "c0e290cf10f5368c2072965111e5c996a5aa2f1ee5918925ab9c1137c5d5b76e",
+    "purpose": "Original positive labels and fixed train/validation/test membership"
+  },
+  {
+    "source": "trusted_pipeline/kg_v2/sources/mirbase_v22_hsa.gff3",
+    "bytes": 534796,
+    "sha256": "d02c0b4e9a401e66240418a572a10732b103dd64acfd10f59df171bcbbd40f59",
+    "purpose": "Frozen mature-miRNA to precursor mapping used by the original audit"
+  },
+  {
+    "source": "消融实验_fixed/binding_function_20260927/source/CLASH_human_HEK293T_Expanded.csv",
+    "bytes": 31802600,
+    "sha256": "111303284ce8b75d59a9ddef0311082f827a6bf91652bf34219e782d18fc7111",
+    "purpose": "Full CLASH source; release includes detected rows for flagged arm/gene pairs and their partner arms, plus the full detected-miRNA index"
+  },
+  {
+    "source": "消融实验_fixed/arm_annotation_20261003/label_classes.csv",
+    "bytes": 1186502,
+    "sha256": "aff6f962379019231d396d15ce93f6385be6d96f9073de15dbcbd13a99d6e298",
+    "purpose": "Unmodified original arm-annotation audit output"
+  },
+  {
+    "source": "消融实验_fixed/arm_annotation_20261003/by_hairpin.csv",
+    "bytes": 9858,
+    "sha256": "b73326621513a876141e0f3f45ebde685d64dbd5ab0d08ba54afbddd9cde1501",
+    "purpose": "Unmodified original arm-annotation audit output"
+  },
+  {
+    "source": "消融实验_fixed/arm_annotation_20261003/summary.md",
+    "bytes": 1855,
+    "sha256": "86d1448b5ed8c40fc674ef013dcf61e14f73d96d2c141a545300705c73a1e0fa",
+    "purpose": "Unmodified original arm-annotation audit output"
+  },
+  {
+    "source": "消融实验_fixed/arm_annotation.py",
+    "bytes": 7327,
+    "sha256": "0b2292ea6b43444d150d727ddcf3a797b10f76ea4dc60a0a3a622c332c0fabd4",
+    "purpose": "Unmodified original audit script; reference original-project layout"
+  },
+  {
+    "source": "消融实验_fixed/flagged_label_diagnostic_20261012/all_oof_rows.csv",
+    "bytes": 2698643,
+    "sha256": "8c9c5f7f2e7478f55b8c2b3348706f2bdba75caad91798163bf908c09c8c5d32",
+    "purpose": "Unmodified later score diagnostic; includes its negative matched-comparison result"
+  },
+  {
+    "source": "消融实验_fixed/flagged_label_diagnostic_20261012/flagged_by_mirna.csv",
+    "bytes": 5371,
+    "sha256": "7928353972349de3b8edbc2e06d0936bbb56c2a747083c4963cf42acedc3ded5",
+    "purpose": "Unmodified later score diagnostic; includes its negative matched-comparison result"
+  },
+  {
+    "source": "消融实验_fixed/flagged_label_diagnostic_20261012/flagged_label_rows.csv",
+    "bytes": 36071,
+    "sha256": "bbd0d34d1703155f73472a2a21eeb0d14e40cdc496fd33d5bcae883acfbfeac5",
+    "purpose": "Unmodified later score diagnostic; includes its negative matched-comparison result"
+  },
+  {
+    "source": "消融实验_fixed/flagged_label_diagnostic_20261012/flagged_label_scores.csv",
+    "bytes": 4148,
+    "sha256": "8e7f3adae88c6d7a3cb66d8222f3fdcbee84b5ea9f2661e10f77654fc8e175a1",
+    "purpose": "Unmodified later score diagnostic; includes its negative matched-comparison result"
+  },
+  {
+    "source": "消融实验_fixed/flagged_label_diagnostic_20261012/matching_balance_and_threshold.csv",
+    "bytes": 1861,
+    "sha256": "7d022494f0274b61eafdd8f95b34c94559c61e3a8dc8da517bd74d8db67bb114",
+    "purpose": "Unmodified later score diagnostic; includes its negative matched-comparison result"
+  },
+  {
+    "source": "消融实验_fixed/flagged_label_diagnostic_20261012/matching_coverage.csv",
+    "bytes": 37224,
+    "sha256": "0493b90c0b22965c1f564e900619cc9e6b2a1a85288a3070c26d468ababb91e7",
+    "purpose": "Unmodified later score diagnostic; includes its negative matched-comparison result"
+  },
+  {
+    "source": "消融实验_fixed/flagged_label_diagnostic_20261012/meta.csv",
+    "bytes": 519513,
+    "sha256": "c2508c522b9867d3ca5c8049a0c3414b47e2b7a7a8215f5705c4e7c5adfc36fd",
+    "purpose": "Unmodified later score diagnostic; includes its negative matched-comparison result"
+  },
+  {
+    "source": "消融实验_fixed/flagged_label_diagnostic_20261012/per_label_comparisons.csv",
+    "bytes": 589084,
+    "sha256": "08b4d190196f679e17de76ca765cf3fa267d3f2f117664cf1ad59154f7064db9",
+    "purpose": "Unmodified later score diagnostic; includes its negative matched-comparison result"
+  },
+  {
+    "source": "消融实验_fixed/flagged_label_diagnostic_20261012/positive_fractions.csv",
+    "bytes": 100,
+    "sha256": "a789e123d91a0ff397b7ff66e94ab54c4b36cbf497f3985ff920b692c0966178",
+    "purpose": "Unmodified later score diagnostic; includes its negative matched-comparison result"
+  },
+  {
+    "source": "消融实验_fixed/flagged_label_diagnostic_20261012/PROTOCOL.md",
+    "bytes": 3858,
+    "sha256": "b5d7028c44068e9c0e0f00ee4e9958f9a35dbc1234741a9ab1996e8f7cfce1a7",
+    "purpose": "Unmodified later score diagnostic; includes its negative matched-comparison result"
+  },
+  {
+    "source": "消融实验_fixed/flagged_label_diagnostic_20261012/scores.csv",
+    "bytes": 2793581,
+    "sha256": "2e44ee2e09cfecddfeca95673263b8426586b4f4cb9d40498385b50163e14c48",
+    "purpose": "Unmodified later score diagnostic; includes its negative matched-comparison result"
+  },
+  {
+    "source": "消融实验_fixed/flagged_label_diagnostic_20261012/sources.json",
+    "bytes": 2946,
+    "sha256": "31262178713cad0471fdae9b0d4992876c3da2778c534d9568c68b9abe046e58",
+    "purpose": "Unmodified later score diagnostic; includes its negative matched-comparison result"
+  },
+  {
+    "source": "消融实验_fixed/flagged_label_diagnostic_20261012/summary.md",
+    "bytes": 8326,
+    "sha256": "2d86df0ce74d9ddd235e321894d9d05f0930de76405fcb7f09646bac120cd9d2",
+    "purpose": "Unmodified later score diagnostic; includes its negative matched-comparison result"
+  },
+  {
+    "source": "消融实验_fixed/flagged_label_diagnostic_20261012/validation.json",
+    "bytes": 642,
+    "sha256": "d558c91111aee5f93345e41ecd8848a71c9efb47782fad6d144e655868791481",
+    "purpose": "Unmodified later score diagnostic; includes its negative matched-comparison result"
+  }
+]
