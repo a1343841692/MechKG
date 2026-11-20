@@ -21,13 +21,13 @@
   },
   {
     "file": "README.md",
-    "bytes": 5461,
-    "sha256": "db1d68a33ced90596fb447aa3a8126a80c45c527b5239f610b3f951841f86cf2"
+    "bytes": 5586,
+    "sha256": "2c90a000e102962bbd8c4ef19e4ddad4caa985917e76176c8cd4644cd4931732"
   },
   {
     "file": "README.zh-CN.md",
-    "bytes": 4342,
-    "sha256": "7f43850e8a274e33d4e3951bb6c020e9b3467f8e73b2a263441137b700f8a082"
+    "bytes": 4495,
+    "sha256": "763fb5a223d25624d9e294e286fad68a79a5a2c065d84334a79026cdb58bc0fd"
   },
   {
     "file": "README_UPDATE_VERIFICATION.json",

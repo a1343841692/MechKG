@@ -8,7 +8,7 @@ miRNA–mRNA 靶向预测与机制通道贡献分析。这里收录最终主模�
 ## 下载数据与模型
 
 完整数据、五折权重和原始代码上传包位于 [Release v1.0.1](https://github.com/a1343841692/MechKG/releases/tag/v1.0.1)。
-仓库及附件均为私有，需要有仓库访问权限的 GitHub 账号登录。
+本仓库及全部 Release 附件均已公开，无需登录即可直接下载。
 
 | Release 附件 | 内容 | 大小 |
 |---|---|---:|
@@ -21,9 +21,11 @@ miRNA–mRNA 靶向预测与机制通道贡献分析。这里收录最终主模�
 **使用此仓库的代码：**
 
 ```bash
-gh repo clone a1343841692/MechKG
+git clone https://github.com/a1343841692/MechKG.git
 cd MechKG
-gh release download v1.0.1 --repo a1343841692/MechKG --pattern 'MechKG_data.zip' --pattern 'MechKG_models_5fold.zip' --dir downloads
+mkdir -p downloads
+curl -L -o downloads/MechKG_data.zip https://github.com/a1343841692/MechKG/releases/download/v1.0.1/MechKG_data.zip
+curl -L -o downloads/MechKG_models_5fold.zip https://github.com/a1343841692/MechKG/releases/download/v1.0.1/MechKG_models_5fold.zip
 python -m zipfile -e downloads/MechKG_data.zip .
 python -m zipfile -e downloads/MechKG_models_5fold.zip .
 python -m pip install -r code/requirements.txt

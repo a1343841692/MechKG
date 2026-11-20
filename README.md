@@ -10,7 +10,7 @@ The released model files contain **only its five fold-specific checkpoints**.
 
 The complete input data, five checkpoints, and standalone code bundle are available in
 [Release v1.0.1](https://github.com/a1343841692/MechKG/releases/tag/v1.0.1).
-Both this repository and its release assets are private. Sign in with a GitHub account that has access to the repository.
+Both this repository and its release assets are publicly accessible without authentication.
 
 | Release asset | Contents | Approximate size |
 |---|---|---:|
@@ -23,9 +23,11 @@ Both this repository and its release assets are private. Sign in with a GitHub a
 To use the code from this repository:
 
 ```bash
-gh repo clone a1343841692/MechKG
+git clone https://github.com/a1343841692/MechKG.git
 cd MechKG
-gh release download v1.0.1 --repo a1343841692/MechKG --pattern 'MechKG_data.zip' --pattern 'MechKG_models_5fold.zip' --dir downloads
+mkdir -p downloads
+curl -L -o downloads/MechKG_data.zip https://github.com/a1343841692/MechKG/releases/download/v1.0.1/MechKG_data.zip
+curl -L -o downloads/MechKG_models_5fold.zip https://github.com/a1343841692/MechKG/releases/download/v1.0.1/MechKG_models_5fold.zip
 python -m zipfile -e downloads/MechKG_data.zip .
 python -m zipfile -e downloads/MechKG_models_5fold.zip .
 python -m pip install -r code/requirements.txt
